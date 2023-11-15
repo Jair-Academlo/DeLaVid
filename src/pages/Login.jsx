@@ -1,13 +1,30 @@
-import '../styles/login.css';
-import logo from '../imgs/logo.png';
 import { useState } from 'react';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../config/firebase';
+import { useDispatch } from 'react-redux';
+import { setToken } from '../store/slice/token.slice';
+import logo from '../imgs/logo.png';
+import '../styles/login.css';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
 	const handleSubmit = e => {
 		e.preventDefault();
+		signInWithEmailAndPassword(auth, email, password)
+			.then(userCredencial => {
+				console.log('user Credencial', userCredencial);
+				dispatch(setToken(true));
+				navigate('/admin');
+			})
+			.catch(err => {
+				console.log('error', err);
+			});
 	};
 	return (
 		<>
