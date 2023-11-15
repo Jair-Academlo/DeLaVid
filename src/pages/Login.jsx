@@ -1,4 +1,5 @@
 import '../styles/login.css';
+import logo from '../imgs/logo.png';
 import { useState } from 'react';
 
 const Login = () => {
@@ -12,7 +13,7 @@ const Login = () => {
 		<>
 			<div className='container-login'>
 				<form onSubmit={() => handleSubmit}>
-					<h1>La Vid</h1>
+					<img src={logo} alt='imagen' width={150} height={150} />
 					<div>
 						<label htmlFor='email'>Email:</label>
 						<input
