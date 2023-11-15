@@ -4,10 +4,14 @@ import { useState } from 'react';
 const Login = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+
+	const handleSubmit = e => {
+		e.preventDefault();
+	};
 	return (
 		<>
 			<div className='container-login'>
-				<form>
+				<form onSubmit={() => handleSubmit}>
 					<h1>DeLaVid App</h1>
 					<div>
 						<label htmlFor='email'>Email:</label>
