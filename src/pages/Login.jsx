@@ -6,30 +6,33 @@ const Login = () => {
 	const [password, setPassword] = useState('');
 	return (
 		<>
-			<div className='container'>
+			<div className='container-login'>
 				<form>
+					<h1>DeLaVid App</h1>
 					<div>
-						<label htmlFor='email'>Email</label>
+						<label htmlFor='email'>Email:</label>
 						<input
 							type='text'
 							id='email'
-							placeholder='email'
+							autoComplete='off'
+							placeholder='Ingresa tu correo'
 							value={email}
 							onChange={e => setEmail(e.target.value)}
 						/>
 					</div>
 					<div>
-						<label htmlFor='pass'>Email</label>
+						<label htmlFor='pass'>Password:</label>
 						<input
 							type='password'
 							id='pass'
-							placeholder='password'
+							autoComplete='new-password'
+							placeholder='Ingresa tu contraseña'
 							value={password}
 							onChange={e => setPassword(e.target.value)}
 						/>
 					</div>
 					<div>
-						<button>Iniciar Session</button>
+						<button type='submit'>Iniciar Session</button>
 					</div>
 				</form>
 			</div>
