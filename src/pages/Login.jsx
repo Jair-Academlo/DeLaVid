@@ -1,17 +1,14 @@
 import { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../config/firebase';
-import { useDispatch } from 'react-redux';
-import { setToken } from '../store/slice/token.slice';
+import { useNavigate } from 'react-router-dom';
 import logo from '../imgs/logo.png';
 import '../styles/login.css';
-import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
-	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
 	const handleSubmit = e => {
@@ -19,7 +16,7 @@ const Login = () => {
 		signInWithEmailAndPassword(auth, email, password)
 			.then(userCredencial => {
 				console.log('user Credencial', userCredencial);
-				dispatch(setToken(true));
+				localStorage.setItem('userToken', true);
 				navigate('/admin');
 			})
 			.catch(err => {

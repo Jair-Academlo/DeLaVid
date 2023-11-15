@@ -1,8 +1,15 @@
+import Home from './Home';
+
 const Admin = () => {
 	return (
-		<div>
-			<h1>Aqui va admin</h1>
-		</div>
+		<>
+			<div className='container-admin'>
+				<aside>
+					<h1>aqui va el panel</h1>
+				</aside>
+				<Home />
+			</div>
+		</>
 	);
 };
 
