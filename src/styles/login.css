@@ -9,8 +9,7 @@
 }
 
 .container-login form {
-	max-width: 400px;
-	min-width: 300px;
+	width: 400px;
 	height: 70vh;
 	display: flex;
 	flex-direction: column;
