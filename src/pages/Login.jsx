@@ -29,7 +29,7 @@ const Login = () => {
 	return (
 		<>
 			<div className='container-login'>
-				<form onSubmit={() => handleSubmit}>
+				<form onSubmit={handleSubmit}>
 					<img src={logo} alt='imagen' width={150} height={150} />
 					<div>
 						<label htmlFor='email'>Email:</label>
