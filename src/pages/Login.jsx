@@ -12,7 +12,7 @@ const Login = () => {
 		<>
 			<div className='container-login'>
 				<form onSubmit={() => handleSubmit}>
-					<h1>DeLaVid App</h1>
+					<h1>La Vid</h1>
 					<div>
 						<label htmlFor='email'>Email:</label>
 						<input

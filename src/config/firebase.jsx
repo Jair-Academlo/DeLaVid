@@ -20,3 +20,9 @@ const firestore = getFirestore(app);
 const storage = getStorage(app);
 
 export { app, auth, firestore, storage };
+
+/*
+Usuario:
+admin@lavidacayucan.com
+Contraseña:
+123456 */
