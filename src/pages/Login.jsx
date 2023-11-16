@@ -18,7 +18,7 @@ const Login = ({ onLogin }) => {
 				console.log('userCredential', userCredential);
 				localStorage.setItem('userToken', 'true');
 				onLogin(); // Llamar a la función de retorno para informar al componente principal que el usuario ha iniciado sesión.
-				navigate('/admin');
+				navigate('/eventos');
 			})
 			.catch(err => {
 				console.log('error', err);

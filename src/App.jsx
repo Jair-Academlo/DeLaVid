@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
-import Admin from './pages/Admin';
 import Login from './pages/Login';
 import Panel from './pages/Panel';
 import Eventos from './pages/Eventos';
@@ -8,6 +7,7 @@ import Media from './pages/Media';
 import Articulos from './pages/Articulos';
 import Peticiones from './pages/Peticiones';
 import Notificaciones from './pages/Notificaciones';
+import Navbar from './components/navbar/Navbar';
 import './App.css';
 
 const App = () => {
@@ -27,13 +27,13 @@ const App = () => {
 			<HashRouter>
 				{authenticated ? (
 					<>
+						<Navbar />
 						<div className='container-app'>
 							<div className='panel-app'>
 								<Panel />
 							</div>
 							<div className='routes-app'>
 								<Routes>
-									<Route path='/admin' element={<Admin />} />
 									<Route
 										path='/eventos'
 										element={<Eventos />}
