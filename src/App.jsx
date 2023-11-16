@@ -39,7 +39,6 @@ const App = () => {
 							path='/'
 							element={<Login onLogin={handleLogin} />}
 						/>
-						{/* Add other routes for unauthenticated users if needed */}
 					</Routes>
 				)}
 			</HashRouter>
