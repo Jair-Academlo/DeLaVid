@@ -5,3 +5,11 @@ body {
 	background-color: grey;
 	text-align: center;
 }
+
+.panel-app {
+	width: 30%;
+}
+
+.routes-app {
+	width: 70%;
+}

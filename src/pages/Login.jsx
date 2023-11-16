@@ -5,24 +5,26 @@ import { useNavigate } from 'react-router-dom';
 import logo from '../imgs/logo.png';
 import '../styles/login.css';
 
-const Login = () => {
+// eslint-disable-next-line react/prop-types
+const Login = ({ onLogin }) => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-
 	const navigate = useNavigate();
 
 	const handleSubmit = e => {
 		e.preventDefault();
 		signInWithEmailAndPassword(auth, email, password)
-			.then(userCredencial => {
-				console.log('user Credencial', userCredencial);
-				localStorage.setItem('userToken', true);
+			.then(userCredential => {
+				console.log('userCredential', userCredential);
+				localStorage.setItem('userToken', 'true');
+				onLogin(); // Llamar a la función de retorno para informar al componente principal que el usuario ha iniciado sesión.
 				navigate('/admin');
 			})
 			.catch(err => {
 				console.log('error', err);
 			});
 	};
+
 	return (
 		<>
 			<div className='container-login'>
@@ -51,7 +53,7 @@ const Login = () => {
 						/>
 					</div>
 					<div>
-						<button type='submit'>Iniciar Session</button>
+						<button type='submit'>Iniciar Sesión</button>
 					</div>
 				</form>
 			</div>
