@@ -5,6 +5,9 @@ body {
 	background-color: grey;
 	text-align: center;
 }
+.container-app {
+	display: flex;
+}
 
 .panel-app {
 	width: 30%;

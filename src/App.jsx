@@ -27,27 +27,32 @@ const App = () => {
 			<HashRouter>
 				{authenticated ? (
 					<>
-						<div className='panel-app'>
-							<Panel />
-						</div>
-						<div className='routes-app'>
-							<Routes>
-								<Route path='/admin' element={<Admin />} />
-								<Route path='/eventos' element={<Eventos />} />
-								<Route path='/media' element={<Media />} />
-								<Route
-									path='/articulos'
-									element={<Articulos />}
-								/>
-								<Route
-									path='/peticiones'
-									element={<Peticiones />}
-								/>
-								<Route
-									path='/notificaciones'
-									element={<Notificaciones />}
-								/>
-							</Routes>
+						<div className='container-app'>
+							<div className='panel-app'>
+								<Panel />
+							</div>
+							<div className='routes-app'>
+								<Routes>
+									<Route path='/admin' element={<Admin />} />
+									<Route
+										path='/eventos'
+										element={<Eventos />}
+									/>
+									<Route path='/media' element={<Media />} />
+									<Route
+										path='/articulos'
+										element={<Articulos />}
+									/>
+									<Route
+										path='/peticiones'
+										element={<Peticiones />}
+									/>
+									<Route
+										path='/notificaciones'
+										element={<Notificaciones />}
+									/>
+								</Routes>
+							</div>
 						</div>
 					</>
 				) : (
