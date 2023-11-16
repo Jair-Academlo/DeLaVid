@@ -3,7 +3,11 @@ import { HashRouter, Routes, Route } from 'react-router-dom';
 import Admin from './pages/Admin';
 import Login from './pages/Login';
 import Panel from './pages/Panel';
-import Home from './pages/Home';
+import Eventos from './pages/Eventos';
+import Media from './pages/Media';
+import Articulos from './pages/Articulos';
+import Peticiones from './pages/Peticiones';
+import Notificaciones from './pages/Notificaciones';
 import './App.css';
 
 const App = () => {
@@ -29,7 +33,20 @@ const App = () => {
 						<div className='routes-app'>
 							<Routes>
 								<Route path='/admin' element={<Admin />} />
-								<Route path='/home' element={<Home />} />
+								<Route path='/eventos' element={<Eventos />} />
+								<Route path='/media' element={<Media />} />
+								<Route
+									path='/articulos'
+									element={<Articulos />}
+								/>
+								<Route
+									path='/peticiones'
+									element={<Peticiones />}
+								/>
+								<Route
+									path='/notificaciones'
+									element={<Notificaciones />}
+								/>
 							</Routes>
 						</div>
 					</>
