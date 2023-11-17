@@ -5,11 +5,54 @@
 	align-items: center;
 	border: 1px lightgray solid;
 	border-radius: 10px;
-	margin: 20px;
+	margin: 10px 20px;
 	background-color: rgba(255, 255, 255, 0.3);
 }
 
 .container-eventos-card:hover {
 	background-color: rgba(255, 255, 255, 0.5);
+	cursor: pointer;
+}
+
+.div-eventos-imagen {
+	width: 20%;
+	text-align: center;
+}
+
+.div-eventos-imagen img {
+	width: 100px;
+	height: 100px;
+	object-fit: contain;
+}
+
+.div-eventos-descripcion {
+	width: 60%;
+}
+
+.div-eventos-button {
+	width: 20%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+}
+
+.div-eventos-button #editar {
+	width: 100px;
+	height: 30px;
+	background-color: rgb(0, 172, 240);
+	border: none;
+	border-radius: 10px;
+	color: #fff;
+	cursor: pointer;
+}
+
+.div-eventos-button #eliminar {
+	width: 100px;
+	height: 30px;
+	background-color: rgb(202, 18, 18);
+	border: none;
+	border-radius: 10px;
+	color: #fff;
 	cursor: pointer;
 }
