@@ -1,0 +1,15 @@
+.container-eventos-card {
+	width: 90%;
+	display: inline-flex;
+	justify-content: left;
+	align-items: center;
+	border: 1px lightgray solid;
+	border-radius: 10px;
+	margin: 20px;
+	background-color: rgba(255, 255, 255, 0.3);
+}
+
+.container-eventos-card:hover {
+	background-color: rgba(255, 255, 255, 0.5);
+	cursor: pointer;
+}
