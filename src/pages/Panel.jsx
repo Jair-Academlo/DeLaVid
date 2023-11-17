@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
+import '../styles/panel.css';
 
 const Panel = () => {
 	return (
 		<>
-			<aside>
+			<aside className='aside-panel'>
 				<h1>panel</h1>
 				<div>
 					<Link to='/eventos'>Eventos</Link>
