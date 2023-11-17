@@ -1,5 +1,5 @@
 import '../styles/notificaciones.css';
-import { IoIosNotifications } from 'react-icons/io';
+import { MdNotificationsActive } from 'react-icons/md';
 
 const Notificaciones = () => {
 	return (
@@ -10,7 +10,7 @@ const Notificaciones = () => {
 					<p>Ingresa el mensaje que se le enviara a los usuarios</p>
 				</section>
 				<section className='section-notificaciones-input'>
-					<IoIosNotifications />
+					<MdNotificationsActive />
 					<input type='text' placeholder='Titulo' />
 				</section>
 				<section>
