@@ -1,8 +1,12 @@
+import '../styles/eventos.css';
+
 const Eventos = () => {
 	return (
-		<div>
-			<h1>Eventos</h1>
-		</div>
+		<>
+			<div className='container-eventos-card'>
+				<h1>Eventos</h1>
+			</div>
+		</>
 	);
 };
 
