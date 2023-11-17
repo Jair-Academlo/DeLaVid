@@ -1,4 +1,7 @@
 import N1 from '../imgs/logo.png';
+import { MdEdit } from 'react-icons/md';
+import { BsFillTrashFill } from 'react-icons/bs';
+
 import '../styles/eventos.css';
 
 const Eventos = () => {
@@ -13,8 +16,18 @@ const Eventos = () => {
 					<p>{new Date().toLocaleDateString()}</p>
 				</div>
 				<div className='div-eventos-button'>
-					<button id='editar'>editar</button>
-					<button id='eliminar'>eliminar</button>
+					<button id='editar'>
+						editar
+						<span>
+							<MdEdit />
+						</span>
+					</button>
+					<button id='eliminar'>
+						eliminar{' '}
+						<span>
+							<BsFillTrashFill />{' '}
+						</span>
+					</button>
 				</div>
 			</div>
 			<div className='container-eventos-card'>
@@ -26,8 +39,18 @@ const Eventos = () => {
 					<p>{new Date().toLocaleDateString()}</p>
 				</div>
 				<div className='div-eventos-button'>
-					<button id='editar'>editar</button>
-					<button id='eliminar'>eliminar</button>
+					<button id='editar'>
+						editar{' '}
+						<span>
+							<MdEdit />
+						</span>
+					</button>
+					<button id='eliminar'>
+						eliminar
+						<span>
+							<BsFillTrashFill />{' '}
+						</span>
+					</button>
 				</div>
 			</div>
 			<div className='container-eventos-card'>
@@ -39,8 +62,18 @@ const Eventos = () => {
 					<p>{new Date().toLocaleDateString()}</p>
 				</div>
 				<div className='div-eventos-button'>
-					<button id='editar'>editar</button>
-					<button id='eliminar'>eliminar</button>
+					<button id='editar'>
+						editar{' '}
+						<span>
+							<MdEdit />
+						</span>
+					</button>
+					<button id='eliminar'>
+						eliminar{' '}
+						<span>
+							<BsFillTrashFill />{' '}
+						</span>
+					</button>
 				</div>
 			</div>
 		</>

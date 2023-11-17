@@ -38,6 +38,7 @@
 }
 
 .div-eventos-button #editar {
+	display: inline-flex;
 	width: 100px;
 	height: 30px;
 	background-color: rgb(0, 172, 240);
@@ -45,9 +46,12 @@
 	border-radius: 10px;
 	color: #fff;
 	cursor: pointer;
+	align-items: center;
+	justify-content: center;
 }
 
 .div-eventos-button #eliminar {
+	display: inline-flex;
 	width: 100px;
 	height: 30px;
 	background-color: rgb(202, 18, 18);
@@ -55,4 +59,20 @@
 	border-radius: 10px;
 	color: #fff;
 	cursor: pointer;
+	align-items: center;
+	justify-content: center;
+}
+
+.div-eventos-button #eliminar span {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 5px;
+}
+
+.div-eventos-button #editar span {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 15px;
 }
