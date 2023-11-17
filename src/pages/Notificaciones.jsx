@@ -5,11 +5,11 @@ const Notificaciones = () => {
 	return (
 		<>
 			<div className='container-notificaciones'>
-				<section>
+				<section className='section-notificaciones-mensajes'>
 					<h2>Envia notificaciones a los usuarios</h2>
 					<p>Ingresa el mensaje que se le enviara a los usuarios</p>
 				</section>
-				<section>
+				<section className='section-notificaciones-input'>
 					<IoIosNotifications />
 					<input type='text' placeholder='Titulo' />
 				</section>
