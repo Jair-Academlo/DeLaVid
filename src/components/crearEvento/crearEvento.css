@@ -14,15 +14,33 @@
 
 .form-container-eventos {
 	padding: 20px;
+	text-align: left;
 }
 
-.form-container-eventos h2 {
+.form-container-eventos div h2 {
 	color: black;
 	font-size: 1.1rem;
 	font-weight: 700;
 }
 
-.form-container-eventos p {
+.form-container-eventos div p {
 	font-size: 0.8rem;
 	font-weight: 400;
+}
+
+.div-nombre-del-evento {
+	width: 300px;
+}
+
+.div-nombre-del-evento input {
+	font-size: 0.8rem;
+	width: 100%;
+	padding: 5px;
+	border-radius: 5px;
+	outline: none;
+	border: 1px lightgray solid;
+}
+
+input#date {
+	display: none;
 }
