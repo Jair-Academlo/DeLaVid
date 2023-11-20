@@ -1,80 +1,100 @@
 import N1 from '../imgs/logo.png';
 import { MdEdit } from 'react-icons/md';
 import { BsFillTrashFill } from 'react-icons/bs';
+import { IoIosAddCircle } from 'react-icons/io';
 
 import '../styles/eventos.css';
 
 const Eventos = () => {
 	return (
 		<>
-			<div className='container-eventos-card'>
-				<div className='div-eventos-imagen'>
-					<img src={N1} alt='imagen' />
-				</div>
-				<div className='div-eventos-descripcion'>
-					<p>Este es un ejemplo de prueba en la descripcion 1.</p>
-					<p>{new Date().toLocaleDateString()}</p>
-				</div>
-				<div className='div-eventos-button'>
-					<button id='editar'>
-						editar
-						<span>
-							<MdEdit />
-						</span>
+			<div>
+				<section>
+					<div className='container-eventos-card'>
+						<div className='div-eventos-imagen'>
+							<img src={N1} alt='imagen' />
+						</div>
+						<div className='div-eventos-descripcion'>
+							<p>
+								Este es un ejemplo de prueba en la descripcion
+								1.
+							</p>
+							<p>{new Date().toLocaleDateString()}</p>
+						</div>
+						<div className='div-eventos-button'>
+							<button id='editar'>
+								Editar
+								<span>
+									<MdEdit />
+								</span>
+							</button>
+							<button id='eliminar'>
+								Eliminar{' '}
+								<span>
+									<BsFillTrashFill />{' '}
+								</span>
+							</button>
+						</div>
+					</div>
+					<div className='container-eventos-card'>
+						<div className='div-eventos-imagen'>
+							<img src={N1} alt='imagen' />
+						</div>
+						<div className='div-eventos-descripcion'>
+							<p>
+								Este es un ejemplo de prueba en la descripcion
+								2.
+							</p>
+							<p>{new Date().toLocaleDateString()}</p>
+						</div>
+						<div className='div-eventos-button'>
+							<button id='editar'>
+								Editar{' '}
+								<span>
+									<MdEdit />
+								</span>
+							</button>
+							<button id='eliminar'>
+								Eliminar
+								<span>
+									<BsFillTrashFill />{' '}
+								</span>
+							</button>
+						</div>
+					</div>
+					<div className='container-eventos-card'>
+						<div className='div-eventos-imagen'>
+							<img src={N1} alt='imagen' />
+						</div>
+						<div className='div-eventos-descripcion'>
+							<p>
+								Este es un ejemplo de prueba en la descripcion
+								3.
+							</p>
+							<p>{new Date().toLocaleDateString()}</p>
+						</div>
+						<div className='div-eventos-button'>
+							<button id='editar'>
+								Editar{' '}
+								<span>
+									<MdEdit />
+								</span>
+							</button>
+							<button id='eliminar'>
+								Eliminar{' '}
+								<span>
+									<BsFillTrashFill />{' '}
+								</span>
+							</button>
+						</div>
+					</div>
+				</section>
+
+				<section className='button-crear-evento'>
+					<button>
+						<IoIosAddCircle />
 					</button>
-					<button id='eliminar'>
-						eliminar{' '}
-						<span>
-							<BsFillTrashFill />{' '}
-						</span>
-					</button>
-				</div>
-			</div>
-			<div className='container-eventos-card'>
-				<div className='div-eventos-imagen'>
-					<img src={N1} alt='imagen' />
-				</div>
-				<div className='div-eventos-descripcion'>
-					<p>Este es un ejemplo de prueba en la descripcion 2.</p>
-					<p>{new Date().toLocaleDateString()}</p>
-				</div>
-				<div className='div-eventos-button'>
-					<button id='editar'>
-						editar{' '}
-						<span>
-							<MdEdit />
-						</span>
-					</button>
-					<button id='eliminar'>
-						eliminar
-						<span>
-							<BsFillTrashFill />{' '}
-						</span>
-					</button>
-				</div>
-			</div>
-			<div className='container-eventos-card'>
-				<div className='div-eventos-imagen'>
-					<img src={N1} alt='imagen' />
-				</div>
-				<div className='div-eventos-descripcion'>
-					<p>Este es un ejemplo de prueba en la descripcion 3.</p>
-					<p>{new Date().toLocaleDateString()}</p>
-				</div>
-				<div className='div-eventos-button'>
-					<button id='editar'>
-						editar{' '}
-						<span>
-							<MdEdit />
-						</span>
-					</button>
-					<button id='eliminar'>
-						eliminar{' '}
-						<span>
-							<BsFillTrashFill />{' '}
-						</span>
-					</button>
-				</div>
+				</section>
 			</div>
 		</>
 	);

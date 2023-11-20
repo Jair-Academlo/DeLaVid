@@ -76,3 +76,41 @@
 	align-items: center;
 	margin-left: 15px;
 }
+
+.button-crear-evento {
+	position: fixed;
+	top: 85%;
+	left: 90%;
+}
+
+.button-crear-evento button {
+	font-size: 2rem;
+	border: none;
+	background: transparent;
+	transform: rotate(0deg);
+	transition: transform 0.8s;
+	cursor: pointer;
+}
+
+.button-crear-evento button:hover {
+	transform: rotate(360deg);
+}
+
+.button-crear-evento button::before {
+	font-size: 0.6rem;
+	content: 'Crear Evento';
+	position: absolute;
+	top: -30px;
+	left: 50%;
+	transform: translateX(-50%);
+	background: #333;
+	color: #fff;
+	padding: 5px 10px;
+	border-radius: 5px;
+	opacity: 0;
+	transition: opacity 0.5s;
+}
+
+.button-crear-evento button:hover::before {
+	opacity: 1;
+}
