@@ -94,6 +94,7 @@
 
 .button-crear-evento button:hover {
 	transform: rotate(360deg);
+	color: #f24726;
 }
 
 .button-crear-evento button::before {
