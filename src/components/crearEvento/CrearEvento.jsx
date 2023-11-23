@@ -15,22 +15,29 @@ const CrearEvento = () => {
 		<>
 			<div className='container-modal'>
 				<div className='form-container-eventos'>
-					<div>
-						<h2>Crear Evento</h2>
-						<p>llena todos los campos para crear el evento</p>
-					</div>
-					<div className='div-nombre-del-evento'>
-						<h2>Nombre del evento</h2>
-						<input
-							type='text'
-							placeholder='Escribe el nombre del evento'
-						/>
-					</div>
-					<div>
+					<section>
+						<div className='div-nombre-del-evento'>
+							<h2>Nombre del evento</h2>
+							<input
+								type='text'
+								placeholder='Escribe el nombre del evento'
+							/>
+						</div>
+						<div className='div-buttom-del-evento'>
+							<button>Guardar</button>
+						</div>
+					</section>
+					<div className='div-fecha-del-evento'>
 						<h2>Fecha</h2>
+
 						<label htmlFor='date'>
-							Escribe la fecha del evento <MdDateRange />
+							Escribe la fecha del evento <MdDateRange />{' '}
 						</label>
+
+						<span>
+							{selectedDate &&
+								selectedDate.toISOString().split('T')[0]}
+						</span>
 
 						<DatePicker
 							id='date'
@@ -38,24 +45,29 @@ const CrearEvento = () => {
 							onChange={handleDateChange}
 							dateFormat='yyyy-MM-dd'
 						/>
-
-						<p>
-							Fecha seleccionada:{' '}
-							{selectedDate &&
-								selectedDate.toISOString().split('T')[0]}
-						</p>
 					</div>
-					<div>
+					<div className='div-hora-del-evento'>
 						<h2>Hora</h2>
-						<span>Coloca la hora del evento</span>
-						<input type='time' />
+						<div>
+							<label>
+								Coloca la hora del evento{' '}
+								<input
+									type='time'
+									placeholder='Coloca la hora del evento'
+								/>
+							</label>
+						</div>
 					</div>
-					<div>
-						<p>informacion:</p>
+
+					<div className='div-file-del-evento'>
+						<span>Imagen del evento</span> <input type='file' />
+					</div>
+					<div className='div-informacion-del-evento'>
+						<h2>Informacion:</h2>
 						<textarea
 							name='descripcion'
 							id='descripcion'
-							cols='20'
+							cols='50'
 							rows='5'
 							placeholder='Escribe la informacion del evento'
 						></textarea>
