@@ -2,10 +2,77 @@
 	background-color: rgba(255, 255, 255, 0.3);
 	backdrop-filter: blur(10px);
 	height: 95vh;
+	border-right: 1px lightgray solid;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
-.aside-panel h1 {
+.section-profile-aside-panel {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 80%;
+	height: 40vh;
+	border: 1px lightblue solid;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	background-color: rgba(255, 255, 255, 0.1);
+	border-radius: 20px;
+	gap: 20px;
+}
+
+.section-profile-aside-panel img {
+	width: 100px;
+	height: 100px;
+	object-fit: contain;
+	border-radius: 50%;
+	border: 1px #f24726 solid;
+}
+
+.section-profile-aside-panel p {
 	margin: 0;
+	font-size: 0.8rem;
+	font-family: 'Times New Roman', Times, serif;
+	color: grey;
+}
+
+.section-profile-aside-panel div button {
+	border: none;
+	width: 120px;
+	border-radius: 20px;
+	height: 40px;
+	color: white;
+	background-color: #f24726;
+	cursor: pointer;
+}
+
+.section-icons-aside-panel {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.section-icons-aside-panel div {
+	width: 100%;
+	display: flex;
+	justify-content: left;
+	height: 30px;
+	border-radius: 20px;
+	padding: 5px;
+	gap: 10px;
+}
+
+.section-icons-aside-panel div span {
+	padding: 5px;
+	border-radius: 20px;
+}
+
+.section-icons-aside-panel div:hover {
+	background-color: #f24726;
+	color: white;
 }
 
 .aside-panel div {
@@ -18,5 +85,5 @@
 }
 
 .aside-panel div a:-webkit-any-link:hover {
-	color: blueviolet;
+	color: white;
 }
