@@ -4,7 +4,8 @@ import { MdDateRange } from 'react-icons/md';
 import 'react-datepicker/dist/react-datepicker.css';
 import './crearEvento.css';
 
-const CrearEvento = () => {
+// eslint-disable-next-line react/prop-types
+const CrearEvento = ({ modal }) => {
 	const [selectedDate, setSelectedDate] = useState(null);
 
 	const handleDateChange = date => {
@@ -24,20 +25,25 @@ const CrearEvento = () => {
 							/>
 						</div>
 						<div className='div-buttom-del-evento'>
-							<button>Guardar</button>
+							<button id='cancelar' onClick={() => modal(false)}>
+								Cancelar
+							</button>
+							<button onClick={() => modal(false)}>
+								Guardar
+							</button>
 						</div>
 					</section>
 					<div className='div-fecha-del-evento'>
 						<h2>Fecha</h2>
 
 						<label htmlFor='date'>
-							Escribe la fecha del evento <MdDateRange />{' '}
+							Selecciona la fecha del evento{' '}
+							<span>
+								{selectedDate &&
+									selectedDate.toISOString().split('T')[0]}
+							</span>{' '}
+							<MdDateRange />
 						</label>
-
-						<span>
-							{selectedDate &&
-								selectedDate.toISOString().split('T')[0]}
-						</span>
 
 						<DatePicker
 							id='date'
@@ -67,7 +73,7 @@ const CrearEvento = () => {
 						<textarea
 							name='descripcion'
 							id='descripcion'
-							cols='50'
+							cols='70'
 							rows='5'
 							placeholder='Escribe la informacion del evento'
 						></textarea>

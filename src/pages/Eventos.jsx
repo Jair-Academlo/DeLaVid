@@ -13,7 +13,7 @@ const Eventos = () => {
 	return (
 		<>
 			{modal ? (
-				<CrearEvento />
+				<CrearEvento modal={setModal} />
 			) : (
 				<div>
 					<section>
