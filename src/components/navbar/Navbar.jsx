@@ -1,11 +1,28 @@
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { MdNotificationsActive, MdMessage } from 'react-icons/md';
+import logo from '../../imgs/icon.png';
+
 import './navbar.css';
 
 const Navbar = () => {
 	return (
 		<>
-			<div className='container-navbar'>
-				<h1>esto es el Navbar</h1>
-			</div>
+			<section className='container-navbar'>
+				<div className='menu-hamburguesa-navbar'>
+					<GiHamburgerMenu />
+				</div>
+				<div className='icons-navbar'>
+					<span>
+						<MdNotificationsActive />
+					</span>
+					<span>
+						<MdMessage />
+					</span>
+					<span>
+						<img src={logo} alt='logo' width={30} height={30} />
+					</span>
+				</div>
+			</section>
 		</>
 	);
 };

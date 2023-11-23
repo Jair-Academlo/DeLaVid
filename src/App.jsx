@@ -27,12 +27,12 @@ const App = () => {
 			<HashRouter>
 				{authenticated ? (
 					<>
-						<Navbar />
 						<div className='container-app'>
 							<div className='panel-app'>
 								<Panel />
 							</div>
 							<div className='routes-app'>
+								<Navbar />
 								<Routes>
 									<Route
 										path='/eventos'
