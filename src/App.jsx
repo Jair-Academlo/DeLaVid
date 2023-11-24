@@ -9,6 +9,7 @@ import Peticiones from './pages/Peticiones';
 import Notificaciones from './pages/Notificaciones';
 import Navbar from './components/navbar/Navbar';
 import './App.css';
+import DetallesEvento from './components/detallesEvento/DetallesEvento';
 
 const App = () => {
 	const [authenticated, setAuthenticated] = useState(false);
@@ -37,6 +38,10 @@ const App = () => {
 									<Route
 										path='/eventos'
 										element={<Eventos />}
+									/>
+									<Route
+										path='/eventos/:id'
+										element={<DetallesEvento />}
 									/>
 									<Route path='/media' element={<Media />} />
 									<Route

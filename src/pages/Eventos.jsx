@@ -1,13 +1,16 @@
-import N1 from '../imgs/logo.png';
+import { useState } from 'react';
 import { MdEdit } from 'react-icons/md';
 import { BsFillTrashFill } from 'react-icons/bs';
 import { IoIosAddCircle } from 'react-icons/io';
+import N1 from '../imgs/logo.png';
 
-import '../styles/eventos.css';
-import { useState } from 'react';
 import CrearEvento from '../components/crearEvento/CrearEvento';
+import '../styles/eventos.css';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Eventos = () => {
+	const { id = 1 } = useParams();
+	const navigate = useNavigate();
 	const [modal, setModal] = useState(false);
 
 	return (
@@ -17,7 +20,12 @@ const Eventos = () => {
 			) : (
 				<div>
 					<section>
-						<div className='container-eventos-card'>
+						<div
+							className='container-eventos-card'
+							onClick={() => {
+								navigate(`/eventos/${id}`);
+							}}
+						>
 							<div className='div-eventos-imagen'>
 								<img src={N1} alt='imagen' />
 							</div>
