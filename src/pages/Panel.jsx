@@ -19,7 +19,7 @@ const Panel = () => {
 					<img src={logo} alt='logo' width={150} height={150} />
 					<p>admin@lavidacayucan.com</p>
 					<div>
-						<button>Cerrar Session</button>
+						<button>Cerrar Sesión</button>
 					</div>
 				</section>
 				<section className='section-icons-aside-panel'>
