@@ -10,6 +10,7 @@ import Notificaciones from './pages/Notificaciones';
 import Navbar from './components/navbar/Navbar';
 import './App.css';
 import DetallesEvento from './components/detallesEvento/DetallesEvento';
+import DetallesMedia from './components/detallesMedia/DetallesMedia';
 
 const App = () => {
 	const [authenticated, setAuthenticated] = useState(false);
@@ -44,6 +45,10 @@ const App = () => {
 										element={<DetallesEvento />}
 									/>
 									<Route path='/media' element={<Media />} />
+									<Route
+										path='/media/:id'
+										element={<DetallesMedia />}
+									/>
 									<Route
 										path='/articulos'
 										element={<Articulos />}
