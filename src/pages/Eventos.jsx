@@ -2,11 +2,10 @@ import { useState } from 'react';
 import { MdEdit } from 'react-icons/md';
 import { BsFillTrashFill } from 'react-icons/bs';
 import { IoIosAddCircle } from 'react-icons/io';
-import N1 from '../imgs/logo.png';
-
 import CrearEvento from '../components/crearEvento/CrearEvento';
-import '../styles/eventos.css';
 import { useNavigate, useParams } from 'react-router-dom';
+import N1 from '../imgs/logo.png';
+import '../styles/eventos.css';
 
 const Eventos = () => {
 	const { id = 1 } = useParams();

@@ -5,6 +5,7 @@ import CrearEvento from '../components/crearEvento/CrearEvento';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import N1 from '../imgs/logo.png';
+import '../styles/media.css';
 
 const Media = () => {
 	const { id = 1 } = useParams();
@@ -19,20 +20,20 @@ const Media = () => {
 				<div>
 					<section>
 						<div
-							className='container-eventos-card'
+							className='container-media-card'
 							onClick={() => {
-								navigate(`/eventos/${id}`);
+								navigate(`/media/${id}`);
 							}}
 						>
-							<div className='div-eventos-imagen'>
+							<div className='div-media-imagen'>
 								<img src={N1} alt='imagen' />
 							</div>
-							<div className='div-eventos-descripcion'>
+							<div className='div-media-descripcion'>
 								<p>Nombre del Audio</p>
 								<p>Autor</p>
 								<p>{new Date().toLocaleDateString()}</p>
 							</div>
-							<div className='div-eventos-button'>
+							<div className='div-media-button'>
 								<button id='editar'>
 									Editar
 									<span>
@@ -47,16 +48,16 @@ const Media = () => {
 								</button>
 							</div>
 						</div>
-						<div className='container-eventos-card'>
-							<div className='div-eventos-imagen'>
+						<div className='container-media-card'>
+							<div className='div-media-imagen'>
 								<img src={N1} alt='imagen' />
 							</div>
-							<div className='div-eventos-descripcion'>
+							<div className='div-media-descripcion'>
 								<p>Nombre del Audio</p>
 								<p>Autor</p>
 								<p>{new Date().toLocaleDateString()}</p>
 							</div>
-							<div className='div-eventos-button'>
+							<div className='div-media-button'>
 								<button id='editar'>
 									Editar{' '}
 									<span>
@@ -71,16 +72,16 @@ const Media = () => {
 								</button>
 							</div>
 						</div>
-						<div className='container-eventos-card'>
-							<div className='div-eventos-imagen'>
+						<div className='container-media-card'>
+							<div className='div-media-imagen'>
 								<img src={N1} alt='imagen' />
 							</div>
-							<div className='div-eventos-descripcion'>
+							<div className='div-media-descripcion'>
 								<p>Nombre del Audio</p>
 								<p>Autor</p>
 								<p>{new Date().toLocaleDateString()}</p>
 							</div>
-							<div className='div-eventos-button'>
+							<div className='div-media-button'>
 								<button id='editar'>
 									Editar{' '}
 									<span>
@@ -97,7 +98,7 @@ const Media = () => {
 						</div>
 					</section>
 
-					<section className='button-crear-evento'>
+					<section className='button-crear-media'>
 						<button onClick={() => setModal(!modal)}>
 							<IoIosAddCircle />
 						</button>
