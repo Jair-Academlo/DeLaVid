@@ -1,5 +1,6 @@
-import './detallesEvento.css';
+import { IoArrowBackCircleOutline } from 'react-icons/io5';
 import N1 from '../../imgs/logo.png';
+import './detallesEvento.css';
 
 const DetallesEvento = () => {
 	return (
@@ -20,7 +21,11 @@ const DetallesEvento = () => {
 					</div>
 					<div>
 						<p>Informacion</p>
-						<textarea name='' id='' cols='30' rows='10'></textarea>
+						<textarea
+							cols='30'
+							rows='10'
+							value='Esto es un mensaje de prueba'
+						></textarea>
 					</div>
 				</section>
 				<section className='section-img-ver-detalles-del-evento'>
@@ -34,6 +39,11 @@ const DetallesEvento = () => {
 								height={400}
 							/>
 						</div>
+					</div>
+					<div>
+						<button>
+							<IoArrowBackCircleOutline />
+						</button>
 					</div>
 				</section>
 			</div>
