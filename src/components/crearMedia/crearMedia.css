@@ -8,7 +8,6 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	/* background-color: rgba(255, 255, 255, 0.3); */
 	background-color: rgba(1, 1, 1, 0.3);
 	backdrop-filter: blur(10px);
 }
@@ -29,12 +28,12 @@
 
 .form-container-media div h2 {
 	color: black;
-	font-size: 0.9rem;
+	font-size: 0.8rem;
 	font-weight: 700;
 }
 
 .form-container-media div p {
-	font-size: 0.8rem;
+	font-size: 0.7rem;
 	font-weight: 400;
 }
 
@@ -43,73 +42,13 @@
 }
 
 .div-nombre-del-media input {
-	font-size: 0.8rem;
+	font-size: 0.7rem;
 	width: 261px;
 	padding: 10px;
 	border-radius: 5px;
 	outline: none;
 	border: 1px lightgray solid;
 	font-family: 'Times New Roman', Times, serif;
-}
-
-input#date {
-	display: none;
-	margin: 0;
-}
-
-.div-fecha-del-media label {
-	display: flex;
-	color: grey;
-	font-size: 0.8rem;
-	border-radius: 5px;
-	border: 1px lightgrey solid;
-	padding: 12px 15px;
-	width: 250px;
-	justify-content: space-between;
-	align-items: center;
-	margin-bottom: 10px;
-}
-
-.div-fecha-del-media span {
-	font-size: 0.8rem;
-	color: red;
-}
-
-.react-datepicker {
-	font-family: 'Helvetica Neue', helvetica, arial, sans-serif;
-	font-size: 0.8rem;
-	background-color: #fff;
-	color: #000;
-	border: 1px solid #aeaeae;
-	border-radius: 0.3rem;
-	display: inline-block;
-	position: relative;
-	margin: 0;
-}
-
-.div-hora-del-media div {
-	display: flex;
-	gap: 10px;
-}
-
-.div-hora-del-media div label {
-	display: flex;
-	color: grey;
-	font-size: 0.8rem;
-	border-radius: 5px;
-	border: 1px lightgrey solid;
-	padding: 8px 10px;
-	width: 260px;
-	justify-content: space-around;
-	align-items: center;
-	margin-bottom: 10px;
-}
-
-.div-hora-del-media div label input {
-	height: 0.8rem;
-	color: red;
-	padding: 3px;
-	border: none;
 }
 
 .div-file-del-media {
@@ -132,7 +71,7 @@ input#date {
 	border: 1px lightgrey solid;
 	border-radius: 5px;
 	padding: 10px;
-	font: 0.8rem;
+	font-size: 0.7rem;
 	outline: none;
 	font-family: 'Times New Roman', Times, serif;
 }
