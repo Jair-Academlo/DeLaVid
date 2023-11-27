@@ -8,9 +8,9 @@ import Articulos from './pages/Articulos';
 import Peticiones from './pages/Peticiones';
 import Notificaciones from './pages/Notificaciones';
 import Navbar from './components/navbar/Navbar';
-import './App.css';
 import DetallesEvento from './components/detallesEvento/DetallesEvento';
 import DetallesMedia from './components/detallesMedia/DetallesMedia';
+import './App.css';
 
 const App = () => {
 	const [authenticated, setAuthenticated] = useState(false);
