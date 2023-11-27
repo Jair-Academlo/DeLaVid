@@ -28,10 +28,8 @@ const Media = () => {
 								<img src={N1} alt='imagen' />
 							</div>
 							<div className='div-eventos-descripcion'>
-								<p>
-									Este es un ejemplo de prueba en la
-									descripcion 1.
-								</p>
+								<p>Nombre del Audio</p>
+								<p>Autor</p>
 								<p>{new Date().toLocaleDateString()}</p>
 							</div>
 							<div className='div-eventos-button'>
@@ -54,10 +52,8 @@ const Media = () => {
 								<img src={N1} alt='imagen' />
 							</div>
 							<div className='div-eventos-descripcion'>
-								<p>
-									Este es un ejemplo de prueba en la
-									descripcion 2.
-								</p>
+								<p>Nombre del Audio</p>
+								<p>Autor</p>
 								<p>{new Date().toLocaleDateString()}</p>
 							</div>
 							<div className='div-eventos-button'>
@@ -80,10 +76,8 @@ const Media = () => {
 								<img src={N1} alt='imagen' />
 							</div>
 							<div className='div-eventos-descripcion'>
-								<p>
-									Este es un ejemplo de prueba en la
-									descripcion 3.
-								</p>
+								<p>Nombre del Audio</p>
+								<p>Autor</p>
 								<p>{new Date().toLocaleDateString()}</p>
 							</div>
 							<div className='div-eventos-button'>
