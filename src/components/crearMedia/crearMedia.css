@@ -1,4 +1,4 @@
-.container-modal {
+.container-modal-media {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -8,11 +8,12 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
+	/* background-color: rgba(255, 255, 255, 0.3); */
 	background-color: rgba(1, 1, 1, 0.3);
 	backdrop-filter: blur(10px);
 }
 
-.form-container-eventos {
+.form-container-media {
 	height: 80vh;
 	width: 80%;
 	padding: 10px;
@@ -22,26 +23,26 @@
 	border: 1px #f24726 solid;
 }
 
-.form-container-eventos section {
+.form-container-media section {
 	display: flex;
 }
 
-.form-container-eventos div h2 {
+.form-container-media div h2 {
 	color: black;
 	font-size: 0.9rem;
 	font-weight: 700;
 }
 
-.form-container-eventos div p {
+.form-container-media div p {
 	font-size: 0.8rem;
 	font-weight: 400;
 }
 
-.div-nombre-del-evento {
+.div-nombre-del-media {
 	width: 300px;
 }
 
-.div-nombre-del-evento input {
+.div-nombre-del-media input {
 	font-size: 0.8rem;
 	width: 261px;
 	padding: 10px;
@@ -56,7 +57,7 @@ input#date {
 	margin: 0;
 }
 
-.div-fecha-del-evento label {
+.div-fecha-del-media label {
 	display: flex;
 	color: grey;
 	font-size: 0.8rem;
@@ -69,7 +70,7 @@ input#date {
 	margin-bottom: 10px;
 }
 
-.div-fecha-del-evento span {
+.div-fecha-del-media span {
 	font-size: 0.8rem;
 	color: red;
 }
@@ -86,12 +87,12 @@ input#date {
 	margin: 0;
 }
 
-.div-hora-del-evento div {
+.div-hora-del-media div {
 	display: flex;
 	gap: 10px;
 }
 
-.div-hora-del-evento div label {
+.div-hora-del-media div label {
 	display: flex;
 	color: grey;
 	font-size: 0.8rem;
@@ -104,30 +105,30 @@ input#date {
 	margin-bottom: 10px;
 }
 
-.div-hora-del-evento div label input {
+.div-hora-del-media div label input {
 	height: 0.8rem;
 	color: red;
 	padding: 3px;
 	border: none;
 }
 
-.div-file-del-evento {
+.div-file-del-media {
 	margin: 20px 0;
 }
 
-.div-file-del-evento span {
+.div-file-del-media span {
 	text-align: center;
 	color: grey;
 	font-size: 0.9rem;
 	margin-right: 20px;
 }
 
-.div-file-del-evento input {
+.div-file-del-media input {
 	font-size: 0.8rem;
 	color: gray;
 }
 
-.div-informacion-del-evento textarea {
+.div-informacion-del-media textarea {
 	border: 1px lightgrey solid;
 	border-radius: 5px;
 	padding: 10px;
@@ -136,13 +137,13 @@ input#date {
 	font-family: 'Times New Roman', Times, serif;
 }
 
-.div-buttom-del-evento {
+.div-buttom-del-media {
 	display: flex;
 	position: relative;
 	width: 100%;
 }
 
-.div-buttom-del-evento button {
+.div-buttom-del-media button {
 	position: absolute;
 	top: 10px;
 	right: 20px;

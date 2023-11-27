@@ -1,9 +1,9 @@
 import { BsFillTrashFill } from 'react-icons/bs';
 import { IoIosAddCircle } from 'react-icons/io';
 import { MdEdit } from 'react-icons/md';
-import CrearEvento from '../components/crearEvento/CrearEvento';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import CrearMedia from '../components/crearMedia/CrearMedia';
 import N1 from '../imgs/logo.png';
 import '../styles/media.css';
 
@@ -15,7 +15,7 @@ const Media = () => {
 	return (
 		<>
 			{modal ? (
-				<CrearEvento modal={setModal} />
+				<CrearMedia modal={setModal} />
 			) : (
 				<div>
 					<section>
