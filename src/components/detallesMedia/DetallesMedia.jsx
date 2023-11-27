@@ -1,5 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { IoArrowBackCircleOutline } from 'react-icons/io5';
+import { FaCirclePlay } from 'react-icons/fa6';
+import { AiFillBackward, AiFillFastForward } from 'react-icons/ai';
+
 import N1 from '../../imgs/logo.png';
 import './detallesMedia.css';
 
@@ -7,22 +10,23 @@ const DetallesMedia = () => {
 	const navigate = useNavigate();
 	return (
 		<>
-			<div className='container-ver-detalles-evento'>
-				<section className='section-form-ver-detalles-del-evento'>
+			<div className='container-ver-detalles-media'>
+				<section className='section-form-ver-detalles-del-media'>
 					<div>
-						<p>Nombre del evento</p>
-						<input type='text' value='Prueba 1' />
+						<p>Titulo del audio</p>
+						<input type='text' value='Alabanzas' />
 					</div>
 					<div>
-						<p>Fecha</p>
-						<input type='text' value='2023-02-19' />
+						<p>Autor del audio</p>
+						<input type='text' value='Jair Rincon' />
 					</div>
 					<div>
-						<p>Hora</p>
-						<input type='text' value='18:00' />
+						<p>Categoria</p>
+						<input type='text' value='Semana Santa' />
 					</div>
+
 					<div>
-						<p>Informacion</p>
+						<p>Descripcion</p>
 						<textarea
 							cols='30'
 							rows='10'
@@ -30,26 +34,38 @@ const DetallesMedia = () => {
 						></textarea>
 					</div>
 				</section>
-				<section className='section-img-ver-detalles-del-evento'>
+				<section className='section-img-ver-detalles-del-media'>
 					<div>
-						<p>Imagen del evento</p>
+						<p>Reprodcutor del audio</p>
 						<div>
 							<img
+								id='imagen-video-detalles-media'
 								src={N1}
 								alt='imagen'
-								width={400}
-								height={400}
+								width={300}
+								height={300}
 							/>
+						</div>
+						<div className='div-reproductor-detalles-media'>
+							<span>
+								<AiFillBackward className='icons-reprodcutor-detalles-media' />
+							</span>
+							<span>
+								<FaCirclePlay className='icons-reprodcutor-detalles-media' />
+							</span>
+							<span>
+								<AiFillFastForward className='icons-reprodcutor-detalles-media' />
+							</span>
 						</div>
 					</div>
 
 					<button
-						className='div-button-back-detalles-del-evento'
+						className='div-button-back-detalles-del-media'
 						onClick={() => {
 							navigate(-1);
 						}}
 					>
-						<IoArrowBackCircleOutline className='icon-buttom-regresar-detalles' />
+						<IoArrowBackCircleOutline className='icon-buttom-regresar-detalles-media' />
 					</button>
 				</section>
 			</div>
