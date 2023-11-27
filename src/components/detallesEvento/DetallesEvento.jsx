@@ -1,8 +1,10 @@
 import { IoArrowBackCircleOutline } from 'react-icons/io5';
 import N1 from '../../imgs/logo.png';
 import './detallesEvento.css';
+import { useNavigate } from 'react-router-dom';
 
 const DetallesEvento = () => {
+	const navigate = useNavigate();
 	return (
 		<>
 			<div className='container-ver-detalles-evento'>
@@ -40,11 +42,15 @@ const DetallesEvento = () => {
 							/>
 						</div>
 					</div>
-					<div>
-						<button>
-							<IoArrowBackCircleOutline />
-						</button>
-					</div>
+
+					<button
+						className='div-button-back-detalles-del-evento'
+						onClick={() => {
+							navigate(-1);
+						}}
+					>
+						<IoArrowBackCircleOutline className='icon-buttom-regresar-detalles' />
+					</button>
 				</section>
 			</div>
 		</>
