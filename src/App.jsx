@@ -11,6 +11,7 @@ import Navbar from './components/navbar/Navbar';
 import DetallesEvento from './components/detallesEvento/DetallesEvento';
 import DetallesMedia from './components/detallesMedia/DetallesMedia';
 import './App.css';
+import MediaAudio from './pages/MediaAudio';
 
 const App = () => {
 	const [authenticated, setAuthenticated] = useState(false);
@@ -51,7 +52,7 @@ const App = () => {
 									/>
 									<Route
 										path='/mediaAudio'
-										element={<Media />}
+										element={<MediaAudio />}
 									/>
 									<Route
 										path='/mediaAudio/:id'
