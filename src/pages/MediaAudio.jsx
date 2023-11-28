@@ -3,11 +3,11 @@ import { IoIosAddCircle } from 'react-icons/io';
 import { MdEdit } from 'react-icons/md';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import CrearMedia from '../components/crearMedia/CrearMedia';
+import CrearMediaAudio from '../components/crearMediaAudio/CrearMediaAudio';
 import N1 from '../imgs/logo.png';
 import '../styles/mediaAudio.css';
 
-const Media = () => {
+const MediaAudio = () => {
 	const { id = 1 } = useParams();
 	const navigate = useNavigate();
 	const [modal, setModal] = useState(false);
@@ -15,7 +15,7 @@ const Media = () => {
 	return (
 		<>
 			{modal ? (
-				<CrearMedia modal={setModal} />
+				<CrearMediaAudio modal={setModal} />
 			) : (
 				<div>
 					<section>
@@ -109,4 +109,4 @@ const Media = () => {
 	);
 };
 
-export default Media;
+export default MediaAudio;
