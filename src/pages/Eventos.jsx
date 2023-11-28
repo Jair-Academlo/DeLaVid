@@ -24,7 +24,7 @@ const Eventos = () => {
 				if (snapshot.exists()) {
 					const data = snapshot.val();
 					const dataArray = Object.entries(data).map(
-						([key, value], index) => ({
+						([, value], index) => ({
 							id: index, // Cambia el nombre de la clave a "id" y usa el índice del array
 							...value, // Mantiene el resto de las propiedades del objeto
 						})

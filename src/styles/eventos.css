@@ -22,7 +22,9 @@
 .div-eventos-imagen img {
 	width: 100px;
 	height: 100px;
-	object-fit: contain;
+	object-fit: fill;
+	border-radius: 10px;
+	margin: 5px 0;
 }
 
 .div-eventos-descripcion {
