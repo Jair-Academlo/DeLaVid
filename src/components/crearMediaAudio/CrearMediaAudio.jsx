@@ -1,3 +1,9 @@
+import {
+	AiFillFastBackward,
+	AiFillFastForward,
+	AiFillPlayCircle,
+} from 'react-icons/ai';
+
 import './crearMediaAudio.css';
 
 // eslint-disable-next-line react/prop-types
@@ -8,7 +14,7 @@ const CrearMediaAudio = ({ modal }) => {
 				<div className='form-container-media'>
 					<section>
 						<div className='div-nombre-del-media'>
-							<h2>Titulo del video</h2>
+							<h2>Titulo del Audio</h2>
 							<input type='text' placeholder='Titulo' />
 						</div>
 						<div className='div-buttom-del-media'>
@@ -21,7 +27,7 @@ const CrearMediaAudio = ({ modal }) => {
 						</div>
 					</section>
 					<div className='div-nombre-del-media'>
-						<h2>Autor</h2>
+						<h2>Autor del audio</h2>
 						<input type='text' placeholder='Autor' />
 					</div>
 					<div className='div-informacion-del-media'>
@@ -42,12 +48,23 @@ const CrearMediaAudio = ({ modal }) => {
 						/>
 					</div>
 
+					<div className='div-file-del-media-1'>
+						<span>Audio</span>{' '}
+						<input
+							type='file'
+							id='audio'
+							style={{ display: 'none' }}
+						/>
+						<label
+							htmlFor='audio'
+							id='label-audio-crear-media-audio'
+						>
+							<AiFillFastBackward /> <AiFillPlayCircle />{' '}
+							<AiFillFastForward />
+						</label>
+					</div>
 					<div className='div-file-del-media'>
 						<span>Imagen de Portada</span> <input type='file' />
-					</div>
-					<div className='div-nombre-del-media'>
-						<h2>Escribe la url del video</h2>
-						<input type='text' placeholder='URL del video' />
 					</div>
 				</div>
 			</div>
