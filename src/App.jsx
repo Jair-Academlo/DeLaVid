@@ -50,6 +50,14 @@ const App = () => {
 										element={<DetallesMedia />}
 									/>
 									<Route
+										path='/mediaAudio'
+										element={<Media />}
+									/>
+									<Route
+										path='/mediaAudio/:id'
+										element={<DetallesMedia />}
+									/>
+									<Route
 										path='/articulos'
 										element={<Articulos />}
 									/>
