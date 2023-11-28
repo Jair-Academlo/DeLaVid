@@ -36,7 +36,15 @@ const Panel = () => {
 							<TiMediaPlay />
 						</span>
 						<span>
-							<Link to='/media'>Media</Link>
+							<Link to='/media'>Media Video</Link>
+						</span>
+					</div>
+					<div>
+						<span>
+							<TiMediaPlay />
+						</span>
+						<span>
+							<Link to='/mediaAudio'>Media Audio</Link>
 						</span>
 					</div>
 					<div>
