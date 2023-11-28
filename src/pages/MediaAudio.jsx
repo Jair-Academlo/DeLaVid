@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import CrearMedia from '../components/crearMedia/CrearMedia';
 import N1 from '../imgs/logo.png';
-import '../styles/media.css';
+import '../styles/mediaAudio.css';
 
 const Media = () => {
 	const { id = 1 } = useParams();
