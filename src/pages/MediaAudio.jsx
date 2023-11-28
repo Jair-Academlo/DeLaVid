@@ -22,7 +22,7 @@ const MediaAudio = () => {
 						<div
 							className='container-media-card'
 							onClick={() => {
-								navigate(`/media/${id}`);
+								navigate(`/mediaAudio/${id}`);
 							}}
 						>
 							<div className='div-media-imagen'>

@@ -10,8 +10,9 @@ import Notificaciones from './pages/Notificaciones';
 import Navbar from './components/navbar/Navbar';
 import DetallesEvento from './components/detallesEvento/DetallesEvento';
 import DetallesMedia from './components/detallesMedia/DetallesMedia';
-import './App.css';
 import MediaAudio from './pages/MediaAudio';
+import DetallesMediaAudio from './components/detallesMediaAudio/DetallesMediaAudio';
+import './App.css';
 
 const App = () => {
 	const [authenticated, setAuthenticated] = useState(false);
@@ -56,7 +57,7 @@ const App = () => {
 									/>
 									<Route
 										path='/mediaAudio/:id'
-										element={<DetallesMedia />}
+										element={<DetallesMediaAudio />}
 									/>
 									<Route
 										path='/articulos'
