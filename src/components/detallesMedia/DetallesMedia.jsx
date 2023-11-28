@@ -13,11 +13,11 @@ const DetallesMedia = () => {
 			<div className='container-ver-detalles-media'>
 				<section className='section-form-ver-detalles-del-media'>
 					<div>
-						<p>Titulo del audio</p>
+						<p>Titulo del video</p>
 						<input type='text' value='Alabanzas' />
 					</div>
 					<div>
-						<p>Autor del audio</p>
+						<p>Autor del video</p>
 						<input type='text' value='Jair Rincon' />
 					</div>
 					<div>
@@ -36,7 +36,7 @@ const DetallesMedia = () => {
 				</section>
 				<section className='section-img-ver-detalles-del-media'>
 					<div>
-						<p>Reprodcutor del audio</p>
+						<p>Reprodcutor del video</p>
 						<div>
 							<img
 								id='imagen-video-detalles-media'

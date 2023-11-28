@@ -29,7 +29,7 @@ const Media = () => {
 								<img src={N1} alt='imagen' />
 							</div>
 							<div className='div-media-descripcion'>
-								<p>Nombre del Audio</p>
+								<p>Nombre del Video</p>
 								<p>Autor</p>
 								<p>{new Date().toLocaleDateString()}</p>
 							</div>
@@ -53,7 +53,7 @@ const Media = () => {
 								<img src={N1} alt='imagen' />
 							</div>
 							<div className='div-media-descripcion'>
-								<p>Nombre del Audio</p>
+								<p>Nombre del Video</p>
 								<p>Autor</p>
 								<p>{new Date().toLocaleDateString()}</p>
 							</div>
@@ -77,7 +77,7 @@ const Media = () => {
 								<img src={N1} alt='imagen' />
 							</div>
 							<div className='div-media-descripcion'>
-								<p>Nombre del Audio</p>
+								<p>Nombre del Video</p>
 								<p>Autor</p>
 								<p>{new Date().toLocaleDateString()}</p>
 							</div>
