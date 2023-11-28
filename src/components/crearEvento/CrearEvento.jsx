@@ -1,11 +1,25 @@
 import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { MdDateRange } from 'react-icons/md';
+import { getDatabase, ref, child, get } from 'firebase/database';
 import 'react-datepicker/dist/react-datepicker.css';
 import './crearEvento.css';
 
 // eslint-disable-next-line react/prop-types
 const CrearEvento = ({ modal }) => {
+	const dbRef = ref(getDatabase());
+
+	get(child(dbRef, `projects/proj_cer3wPMCkxSWWePnENPiZL/data/Eventos`))
+		.then(snapshot => {
+			if (snapshot.exists()) {
+				console.log(snapshot.val());
+			} else {
+				console.log('No data available');
+			}
+		})
+		.catch(error => {
+			console.error(error);
+		});
 	const [selectedDate, setSelectedDate] = useState(null);
 
 	const handleDateChange = date => {
