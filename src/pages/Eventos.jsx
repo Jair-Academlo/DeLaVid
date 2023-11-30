@@ -41,8 +41,6 @@ const Eventos = () => {
 		fetchData();
 	}, []);
 
-	console.log(eventosData);
-
 	const { id = 1 } = useParams();
 	const navigate = useNavigate();
 	const [modal, setModal] = useState(false);

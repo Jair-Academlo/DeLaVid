@@ -4,7 +4,7 @@ import { MdDateRange } from 'react-icons/md';
 import { app } from '../../config/firebase';
 import { getDownloadURL, getStorage, uploadBytes, ref } from 'firebase/storage';
 import { getDatabase, push, ref as DatabaseRef } from 'firebase/database';
-/* import { v4 as uuidv4 } from 'uuid'; */
+import IsLoadding from '../isLoadding/IsLoadding';
 import 'react-datepicker/dist/react-datepicker.css';
 import './crearEvento.css';
 
@@ -18,6 +18,7 @@ const CrearEvento = ({ modal }) => {
 	const [time, setTime] = useState('');
 	const [image, setImage] = useState(null);
 	const [file, setFile] = useState(null);
+	const [loadding, setLoadding] = useState(false);
 
 	const handleDateChange = date => {
 		setSelectedDate(date);
@@ -65,6 +66,7 @@ const CrearEvento = ({ modal }) => {
 				setSelectedDate(null);
 				setTime('');
 				setImage(null);
+				setLoadding(false);
 
 				modal(false);
 			}, 3000);
@@ -75,77 +77,94 @@ const CrearEvento = ({ modal }) => {
 
 	return (
 		<>
-			<div className='container-modal'>
-				<form className='form-container-eventos' onSubmit={newEvent}>
-					<section>
-						<div className='div-nombre-del-evento'>
-							<h2>Nombre del evento</h2>
-							<input
-								type='text'
-								value={name}
-								onChange={e => setName(e.target.value)}
-								placeholder='Escribe el nombre del evento'
+			<>
+				{loadding && <IsLoadding />}
+
+				<div className='container-modal'>
+					<form
+						className='form-container-eventos'
+						onSubmit={newEvent}
+					>
+						<section>
+							<div className='div-nombre-del-evento'>
+								<h2>Nombre del evento</h2>
+								<input
+									type='text'
+									value={name}
+									onChange={e => setName(e.target.value)}
+									placeholder='Escribe el nombre del evento'
+								/>
+							</div>
+							<div className='div-buttom-del-evento'>
+								<button
+									id='cancelar'
+									onClick={() => modal(false)}
+								>
+									Cancelar
+								</button>
+								<button
+									type='submit'
+									onClick={() => setLoadding(true)}
+								>
+									Guardar
+								</button>
+							</div>
+						</section>
+						<div className='div-fecha-del-evento'>
+							<h2>Fecha</h2>
+
+							<label htmlFor='date'>
+								Selecciona la fecha del evento{' '}
+								<span>
+									{selectedDate &&
+										selectedDate
+											.toISOString()
+											.split('T')[0]}
+								</span>{' '}
+								<MdDateRange />
+							</label>
+
+							<DatePicker
+								id='date'
+								selected={selectedDate}
+								onChange={handleDateChange}
+								dateFormat='yyyy-MM-dd'
 							/>
 						</div>
-						<div className='div-buttom-del-evento'>
-							<button id='cancelar' onClick={() => modal(false)}>
-								Cancelar
-							</button>
-							<button type='submit'>Guardar</button>
+						<div className='div-hora-del-evento'>
+							<h2>Hora</h2>
+							<div>
+								<label>
+									Coloca la hora del evento{' '}
+									<input
+										type='time'
+										placeholder='Coloca la hora del evento'
+										value={time}
+										onChange={e => setTime(e.target.value)}
+									/>
+								</label>
+							</div>
 						</div>
-					</section>
-					<div className='div-fecha-del-evento'>
-						<h2>Fecha</h2>
 
-						<label htmlFor='date'>
-							Selecciona la fecha del evento{' '}
-							<span>
-								{selectedDate &&
-									selectedDate.toISOString().split('T')[0]}
-							</span>{' '}
-							<MdDateRange />
-						</label>
-
-						<DatePicker
-							id='date'
-							selected={selectedDate}
-							onChange={handleDateChange}
-							dateFormat='yyyy-MM-dd'
-						/>
-					</div>
-					<div className='div-hora-del-evento'>
-						<h2>Hora</h2>
-						<div>
-							<label>
-								Coloca la hora del evento{' '}
-								<input
-									type='time'
-									placeholder='Coloca la hora del evento'
-									value={time}
-									onChange={e => setTime(e.target.value)}
-								/>
-							</label>
+						<div className='div-file-del-evento'>
+							<span>Imagen del evento</span>{' '}
+							<input type='file' onChange={handleFileChange} />
 						</div>
-					</div>
-
-					<div className='div-file-del-evento'>
-						<span>Imagen del evento</span>{' '}
-						<input type='file' onChange={handleFileChange} />
-					</div>
-					<div className='div-informacion-del-evento'>
-						<h2>Informacion:</h2>
-						<textarea
-							name='descripcion'
-							id='descripcion'
-							cols='70'
-							rows='5'
-							placeholder='Escribe la informacion del evento'
-							value={info}
-							onChange={e => setInfo(e.target.value)}
-						></textarea>
-					</div>
-				</form>
-			</div>
+						<div className='div-informacion-del-evento'>
+							<h2>Informacion:</h2>
+							<textarea
+								name='descripcion'
+								id='descripcion'
+								cols='70'
+								rows='5'
+								placeholder='Escribe la informacion del evento'
+								value={info}
+								onChange={e => setInfo(e.target.value)}
+							></textarea>
+						</div>
+					</form>
+				</div>
+			</>
 		</>
 	);
 };
