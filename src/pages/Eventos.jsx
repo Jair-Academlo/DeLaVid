@@ -29,8 +29,9 @@ const Eventos = () => {
 					const data = snapshot.val();
 					const dataArray = Object.entries(data).map(
 						([key, value], index) => ({
-							id: key, // Cambia el nombre de la clave a "id" y usa el índice del array
-							...value, // Mantiene el resto de las propiedades del objeto
+							serial: index,
+							id: key,
+							...value,
 						})
 					);
 					setEventosData(dataArray);
@@ -66,8 +67,9 @@ const Eventos = () => {
 							const data = snapshot.val();
 							const dataArray = Object.entries(data).map(
 								([key, value], index) => ({
-									id: key, // Cambia el nombre de la clave a "id" y usa el índice del array
-									...value, // Mantiene el resto de las propiedades del objeto
+									serial: index,
+									id: key,
+									...value,
 								})
 							);
 							setEventosData(dataArray);
@@ -98,9 +100,9 @@ const Eventos = () => {
 							<div
 								key={evento.id}
 								className='container-eventos-card'
-								/* onClick={() => {
+								onClick={() => {
 									navigate(`/eventos/${id}`);
-								}} */
+								}}
 							>
 								<div className='div-eventos-imagen'>
 									<img src={evento.imagen} alt='imagen' />
@@ -118,7 +120,8 @@ const Eventos = () => {
 									</button>
 									<button
 										id='eliminar'
-										onClick={() => {
+										onClick={e => {
+											e.stopPropagation();
 											eliminarEvento(evento.id);
 										}}
 									>
