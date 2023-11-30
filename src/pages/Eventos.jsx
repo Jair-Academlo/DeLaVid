@@ -6,13 +6,17 @@ import CrearEvento from '../components/crearEvento/CrearEvento';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getDatabase, ref, child, get, remove } from 'firebase/database';
 import { database } from '../config/firebase';
+import { setData } from '../store/data/dataSlice';
 import '../styles/eventos.css';
+import { useDispatch } from 'react-redux';
 
 const Eventos = () => {
 	const [eventosData, setEventosData] = useState([]);
 	const { id = 1 } = useParams();
 	const navigate = useNavigate();
 	const [modal, setModal] = useState(false);
+
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -44,7 +48,7 @@ const Eventos = () => {
 		};
 
 		fetchData();
-	}, [eventosData]);
+	}, []);
 
 	const eliminarEvento = id => {
 		const refPath =
@@ -89,6 +93,11 @@ const Eventos = () => {
 			});
 	};
 
+	const editar = data => {
+		setModal(!modal);
+		dispatch(setData(data));
+	};
+
 	return (
 		<>
 			{modal ? (
@@ -112,7 +121,13 @@ const Eventos = () => {
 									<p>{evento.fecha}</p>
 								</div>
 								<div className='div-eventos-button'>
-									<button id='editar'>
+									<button
+										id='editar'
+										onClick={e => {
+											e.stopPropagation();
+											editar(evento);
+										}}
+									>
 										Editar
 										<span>
 											<MdEdit />

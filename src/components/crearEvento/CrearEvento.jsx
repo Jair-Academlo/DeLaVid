@@ -8,8 +8,13 @@ import IsLoadding from '../isLoadding/IsLoadding';
 import 'react-datepicker/dist/react-datepicker.css';
 import './crearEvento.css';
 
+import { useSelector } from 'react-redux';
+
 // eslint-disable-next-line react/prop-types
 const CrearEvento = ({ modal }) => {
+	const data = useSelector(state => state.data);
+	console.log(data);
+
 	const storage = getStorage(app);
 
 	const [name, setName] = useState('');
