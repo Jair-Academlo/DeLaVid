@@ -4,11 +4,15 @@ import { BsFillTrashFill } from 'react-icons/bs';
 import { IoIosAddCircle } from 'react-icons/io';
 import CrearEvento from '../components/crearEvento/CrearEvento';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getDatabase, ref, child, get } from 'firebase/database';
+import { getDatabase, ref, child, get, remove } from 'firebase/database';
+import { database } from '../config/firebase';
 import '../styles/eventos.css';
 
 const Eventos = () => {
 	const [eventosData, setEventosData] = useState([]);
+	const { id = 1 } = useParams();
+	const navigate = useNavigate();
+	const [modal, setModal] = useState(false);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -24,8 +28,8 @@ const Eventos = () => {
 				if (snapshot.exists()) {
 					const data = snapshot.val();
 					const dataArray = Object.entries(data).map(
-						([, value], index) => ({
-							id: index, // Cambia el nombre de la clave a "id" y usa el índice del array
+						([key, value], index) => ({
+							id: key, // Cambia el nombre de la clave a "id" y usa el índice del array
 							...value, // Mantiene el resto de las propiedades del objeto
 						})
 					);
@@ -39,11 +43,49 @@ const Eventos = () => {
 		};
 
 		fetchData();
-	}, []);
+	}, [eventosData]);
 
-	const { id = 1 } = useParams();
-	const navigate = useNavigate();
-	const [modal, setModal] = useState(false);
+	const eliminarEvento = id => {
+		const refPath =
+			'/projects/proj_cer3wPMCkxSWWePnENPiZL/data/Eventos/' + id;
+
+		remove(ref(database, refPath))
+			.then(() => {
+				console.log('Evento eliminado exitosamente');
+				const fetchData = async () => {
+					try {
+						const dbRef = ref(getDatabase());
+						const snapshot = await get(
+							child(
+								dbRef,
+								'projects/proj_cer3wPMCkxSWWePnENPiZL/data/Eventos'
+							)
+						);
+
+						if (snapshot.exists()) {
+							const data = snapshot.val();
+							const dataArray = Object.entries(data).map(
+								([key, value], index) => ({
+									id: key, // Cambia el nombre de la clave a "id" y usa el índice del array
+									...value, // Mantiene el resto de las propiedades del objeto
+								})
+							);
+							setEventosData(dataArray);
+						} else {
+							console.log(
+								'No hay datos en la colección "Eventos"'
+							);
+						}
+					} catch (error) {
+						console.error('Error al obtener los datos:', error);
+					}
+				};
+				fetchData();
+			})
+			.catch(error => {
+				console.error('Error al eliminar el evento:', error);
+			});
+	};
 
 	return (
 		<>
@@ -56,9 +98,9 @@ const Eventos = () => {
 							<div
 								key={evento.id}
 								className='container-eventos-card'
-								onClick={() => {
+								/* onClick={() => {
 									navigate(`/eventos/${id}`);
-								}}
+								}} */
 							>
 								<div className='div-eventos-imagen'>
 									<img src={evento.imagen} alt='imagen' />
@@ -74,7 +116,12 @@ const Eventos = () => {
 											<MdEdit />
 										</span>
 									</button>
-									<button id='eliminar'>
+									<button
+										id='eliminar'
+										onClick={() => {
+											eliminarEvento(evento.id);
+										}}
+									>
 										Eliminar{' '}
 										<span>
 											<BsFillTrashFill />{' '}
