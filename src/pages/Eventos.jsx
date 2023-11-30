@@ -7,8 +7,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { getDatabase, ref, child, get, remove } from 'firebase/database';
 import { database } from '../config/firebase';
 import { setData } from '../store/data/dataSlice';
-import '../styles/eventos.css';
 import { useDispatch } from 'react-redux';
+import '../styles/eventos.css';
 
 const Eventos = () => {
 	const [eventosData, setEventosData] = useState([]);
