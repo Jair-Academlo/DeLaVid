@@ -1,26 +1,20 @@
-import { useState } from 'react';
-import DatePicker from 'react-datepicker';
-import { MdDateRange } from 'react-icons/md';
-import { app } from '../../config/firebase';
 import { getDownloadURL, getStorage, uploadBytes, ref } from 'firebase/storage';
 import { getDatabase, push, ref as DatabaseRef } from 'firebase/database';
+import { useSelector, useDispatch } from 'react-redux';
+import { MdDateRange } from 'react-icons/md';
+import { useState } from 'react';
+import { setEditar } from '../../store/data/editarSlice';
+import DatePicker from 'react-datepicker';
 import IsLoadding from '../isLoadding/IsLoadding';
+import { app } from '../../config/firebase';
 import 'react-datepicker/dist/react-datepicker.css';
 import './crearEvento.css';
-
-import { useSelector, useDispatch } from 'react-redux';
-
-import { setEditar } from '../../store/data/editarSlice';
 
 // eslint-disable-next-line react/prop-types
 const CrearEvento = ({ modal }) => {
 	const data = useSelector(state => state.data);
 	const editar = useSelector(state => state.editar);
 	const dispatch = useDispatch();
-
-	console.log(data);
-	console.log(editar);
-
 	const storage = getStorage(app);
 
 	const [name, setName] = useState('');
@@ -139,10 +133,13 @@ const CrearEvento = ({ modal }) => {
 							<label htmlFor='date'>
 								Selecciona la fecha del evento{' '}
 								<span>
-									{selectedDate &&
-										selectedDate
-											.toISOString()
-											.split('T')[0]}
+									{selectedDate
+										? selectedDate
+												.toISOString()
+												.split('T')[0]
+										: editar
+										? data.fecha
+										: ''}
 								</span>{' '}
 								<MdDateRange />
 							</label>
