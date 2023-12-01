@@ -44,12 +44,31 @@
 }
 
 .section-img-ver-detalles-del-evento {
-	width: 50%;
+	width: 100%;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	justify-content: left;
+	justify-content: center;
 	flex-wrap: wrap;
+}
+
+.section-img-ver-detalles-del-evento div {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.section-img-ver-detalles-del-evento div div {
+	text-align: center;
+}
+
+.section-img-ver-detalles-del-evento div div img {
+	width: 250px;
+	height: 250px;
+	object-fit: fill;
+	border-radius: 20px;
 }
 
 .div-button-back-detalles-del-evento {

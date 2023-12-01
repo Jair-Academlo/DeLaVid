@@ -94,10 +94,14 @@ const Eventos = () => {
 			});
 	};
 
-	const editar = data => {
+	const editarEvento = data => {
 		setModal(!modal);
 		dispatch(setData(data));
 		dispatch(setEditar(true));
+	};
+
+	const dirigirDetallesEvento = data => {
+		dispatch(setData(data));
 	};
 
 	return (
@@ -113,6 +117,7 @@ const Eventos = () => {
 								className='container-eventos-card'
 								onClick={() => {
 									navigate(`/eventos/${id}`);
+									dirigirDetallesEvento(evento);
 								}}
 							>
 								<div className='div-eventos-imagen'>
@@ -127,7 +132,7 @@ const Eventos = () => {
 										id='editar'
 										onClick={e => {
 											e.stopPropagation();
-											editar(evento);
+											editarEvento(evento);
 										}}
 									>
 										Editar
