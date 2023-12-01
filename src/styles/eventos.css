@@ -11,8 +11,9 @@
 }
 
 .container-eventos-card:hover {
-	background-color: rgba(255, 255, 255, 0.5);
+	background-color: #f75939;
 	cursor: pointer;
+	transition: 0.5s;
 }
 
 .div-eventos-imagen {
@@ -53,6 +54,11 @@
 	justify-content: center;
 }
 
+.div-eventos-button #editar:hover {
+	transform: scale(1.1);
+	transition: 0.3s;
+}
+
 .div-eventos-button #eliminar {
 	display: inline-flex;
 	width: 100px;
@@ -65,6 +71,11 @@
 	align-items: center;
 	justify-content: center;
 	z-index: 1;
+}
+
+.div-eventos-button #eliminar:hover {
+	transform: scale(1.1);
+	transition: 0.1s;
 }
 
 .div-eventos-button #eliminar span {
