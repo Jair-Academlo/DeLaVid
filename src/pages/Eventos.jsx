@@ -7,6 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { getDatabase, ref, child, get, remove } from 'firebase/database';
 import { database } from '../config/firebase';
 import { setData } from '../store/data/dataSlice';
+import { setEditar } from '../store/data/editarSlice';
 import { useDispatch } from 'react-redux';
 import '../styles/eventos.css';
 
@@ -96,6 +97,7 @@ const Eventos = () => {
 	const editar = data => {
 		setModal(!modal);
 		dispatch(setData(data));
+		dispatch(setEditar(true));
 	};
 
 	return (

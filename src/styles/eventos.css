@@ -85,6 +85,7 @@
 	position: fixed;
 	top: 85%;
 	left: 90%;
+	z-index: 10;
 }
 
 .button-crear-evento button {

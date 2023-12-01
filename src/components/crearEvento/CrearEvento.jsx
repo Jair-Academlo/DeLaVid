@@ -8,12 +8,18 @@ import IsLoadding from '../isLoadding/IsLoadding';
 import 'react-datepicker/dist/react-datepicker.css';
 import './crearEvento.css';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { setEditar } from '../../store/data/editarSlice';
 
 // eslint-disable-next-line react/prop-types
 const CrearEvento = ({ modal }) => {
 	const data = useSelector(state => state.data);
+	const editar = useSelector(state => state.editar);
+	const dispatch = useDispatch();
+
 	console.log(data);
+	console.log(editar);
 
 	const storage = getStorage(app);
 
@@ -71,6 +77,7 @@ const CrearEvento = ({ modal }) => {
 				setSelectedDate(null);
 				setTime('');
 				setImage(null);
+				dispatch(setEditar(false));
 				setLoadding(false);
 
 				modal(false);
@@ -78,6 +85,16 @@ const CrearEvento = ({ modal }) => {
 		} catch (error) {
 			console.error('Error al agregar el evento:', error);
 		}
+	};
+
+	const cancelar = () => {
+		setName('');
+		setInfo('');
+		setSelectedDate(null);
+		setTime('');
+		setImage(null);
+		dispatch(setEditar(false));
+		modal(false);
 	};
 
 	return (
@@ -95,16 +112,13 @@ const CrearEvento = ({ modal }) => {
 								<h2>Nombre del evento</h2>
 								<input
 									type='text'
-									value={name}
+									value={editar ? data.fecha : name}
 									onChange={e => setName(e.target.value)}
 									placeholder='Escribe el nombre del evento'
 								/>
 							</div>
 							<div className='div-buttom-del-evento'>
-								<button
-									id='cancelar'
-									onClick={() => modal(false)}
-								>
+								<button id='cancelar' onClick={cancelar}>
 									Cancelar
 								</button>
 								<button
