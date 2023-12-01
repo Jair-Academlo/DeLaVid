@@ -49,7 +49,7 @@ const Eventos = () => {
 		};
 
 		fetchData();
-	}, []);
+	}, [modal]);
 
 	const eliminarEvento = id => {
 		const refPath =
@@ -57,7 +57,6 @@ const Eventos = () => {
 
 		remove(ref(database, refPath))
 			.then(() => {
-				console.log('Evento eliminado exitosamente');
 				const fetchData = async () => {
 					try {
 						const dbRef = ref(getDatabase());

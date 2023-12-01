@@ -17,6 +17,8 @@ const CrearEvento = ({ modal }) => {
 	const dispatch = useDispatch();
 	const storage = getStorage(app);
 
+	console.log(data);
+
 	const [name, setName] = useState('');
 	const [info, setInfo] = useState('');
 	const [selectedDate, setSelectedDate] = useState(null);
@@ -61,11 +63,17 @@ const CrearEvento = ({ modal }) => {
 					),
 					{
 						'time evento': timestamp.getTime().toString(),
-						'nombre del evento': name,
-						fecha: selectedDate.toISOString().split('T')[0],
-						hora: time,
-						imagen: imageUrl,
-						'informacion del evento': info,
+						'nombre del evento': name
+							? name
+							: data['nombre del evento'],
+						fecha: selectedDate
+							? selectedDate.toISOString().split('T')[0]
+							: data.fecha,
+						hora: time ? time : data.hora,
+						imagen: imageUrl ? imageUrl : data.imagen,
+						'informacion del evento': info
+							? info
+							: data['detalles del evento'],
 						'id evento': editar ? data.id : id,
 					}
 				);
