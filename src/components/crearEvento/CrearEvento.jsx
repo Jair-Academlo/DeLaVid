@@ -2,7 +2,7 @@ import { getDownloadURL, getStorage, uploadBytes, ref } from 'firebase/storage';
 import { getDatabase, ref as DatabaseRef, set } from 'firebase/database';
 import { useSelector, useDispatch } from 'react-redux';
 import { MdDateRange } from 'react-icons/md';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { setEditar } from '../../store/data/editarSlice';
 import DatePicker from 'react-datepicker';
 import IsLoadding from '../isLoadding/IsLoadding';
@@ -22,10 +22,27 @@ const CrearEvento = ({ modal }) => {
 	const [name, setName] = useState('');
 	const [info, setInfo] = useState('');
 	const [selectedDate, setSelectedDate] = useState(null);
-	const [time, setTime] = useState();
+	const [time, setTime] = useState('');
 	const [image, setImage] = useState(null);
 	const [file, setFile] = useState(null);
 	const [loadding, setLoadding] = useState(false);
+
+	useEffect(() => {
+		if (editar && data) {
+			// Asegúrate de que data esté definido
+			setName(data['nombre del evento']);
+			setInfo(data['informacion del evento']);
+			setSelectedDate(data.fecha ? new Date(data.fecha) : null); // Convierte la fecha a objeto Date si está presente
+			setTime(data.hora);
+			setImage(data.imagen);
+		} else {
+			setName('');
+			setInfo('');
+			setSelectedDate(null);
+			setTime('');
+			setImage(null);
+		}
+	}, [editar, data]);
 
 	const handleDateChange = date => {
 		setSelectedDate(date);
@@ -63,17 +80,11 @@ const CrearEvento = ({ modal }) => {
 					),
 					{
 						'time evento': timestamp.getTime().toString(),
-						'nombre del evento': name
-							? name
-							: data['nombre del evento'],
-						fecha: selectedDate
-							? selectedDate.toISOString().split('T')[0]
-							: data.fecha,
-						hora: time ? time : data.hora,
-						imagen: imageUrl ? imageUrl : data.imagen,
-						'informacion del evento': info
-							? info
-							: data['detalles del evento'],
+						'nombre del evento': name,
+						fecha: selectedDate,
+						hora: time,
+						imagen: imageUrl,
+						'informacion del evento': info,
 						'id evento': editar ? data.id : id,
 					}
 				);
@@ -118,11 +129,7 @@ const CrearEvento = ({ modal }) => {
 								<h2>Nombre del evento</h2>
 								<input
 									type='text'
-									defaultValue={
-										editar
-											? data['nombre del evento']
-											: name
-									}
+									value={name}
 									onChange={e => setName(e.target.value)}
 									placeholder='Escribe el nombre del evento'
 								/>
@@ -145,22 +152,17 @@ const CrearEvento = ({ modal }) => {
 							<label htmlFor='date'>
 								Selecciona la fecha del evento{' '}
 								<span>
-									{selectedDate
-										? selectedDate
-												.toISOString()
-												.split('T')[0]
-										: editar
-										? data.fecha
-										: ''}
+									{selectedDate &&
+										selectedDate
+											.toISOString()
+											.split('T')[0]}
 								</span>{' '}
 								<MdDateRange />
 							</label>
 
 							<DatePicker
 								id='date'
-								defaultValue={
-									editar ? data.fecha : selectedDate
-								}
+								defaultValue={selectedDate}
 								selected={selectedDate}
 								onChange={handleDateChange}
 								dateFormat='yyyy-MM-dd'
@@ -174,7 +176,7 @@ const CrearEvento = ({ modal }) => {
 									<input
 										type='time'
 										placeholder='Coloca la hora del evento'
-										defaultValue={editar ? data.hora : time}
+										defaultValue={time}
 										onChange={e => setTime(e.target.value)}
 									/>
 								</label>
@@ -193,11 +195,7 @@ const CrearEvento = ({ modal }) => {
 								cols='70'
 								rows='5'
 								placeholder='Escribe la informacion del evento'
-								defaultValue={
-									editar
-										? data['informacion del evento']
-										: info
-								}
+								defaultValue={info}
 								onChange={e => setInfo(e.target.value)}
 							></textarea>
 						</div>
