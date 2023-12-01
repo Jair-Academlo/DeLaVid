@@ -1,5 +1,5 @@
 import { getDownloadURL, getStorage, uploadBytes, ref } from 'firebase/storage';
-import { getDatabase, push, ref as DatabaseRef, set } from 'firebase/database';
+import { getDatabase, ref as DatabaseRef, set } from 'firebase/database';
 import { useSelector, useDispatch } from 'react-redux';
 import { MdDateRange } from 'react-icons/md';
 import { useState } from 'react';
