@@ -1,5 +1,5 @@
 import { getDownloadURL, getStorage, uploadBytes, ref } from 'firebase/storage';
-import { getDatabase, push, ref as DatabaseRef } from 'firebase/database';
+import { getDatabase, push, ref as DatabaseRef, set } from 'firebase/database';
 import { useSelector, useDispatch } from 'react-redux';
 import { MdDateRange } from 'react-icons/md';
 import { useState } from 'react';
@@ -48,12 +48,16 @@ const CrearEvento = ({ modal }) => {
 
 			const timestamp = new Date();
 
+			const id = crypto.randomUUID();
+
 			setTimeout(async () => {
 				const db = getDatabase(app);
-				await push(
+				await set(
 					DatabaseRef(
 						db,
-						'/projects/proj_cer3wPMCkxSWWePnENPiZL/data/Eventos'
+						`/projects/proj_cer3wPMCkxSWWePnENPiZL/data/Eventos/${
+							editar ? data.id : id
+						}`
 					),
 					{
 						'time evento': timestamp.getTime().toString(),
@@ -62,7 +66,7 @@ const CrearEvento = ({ modal }) => {
 						hora: time,
 						imagen: imageUrl,
 						'informacion del evento': info,
-						'id evento': crypto.randomUUID(),
+						'id evento': editar ? data.id : id,
 					}
 				);
 
