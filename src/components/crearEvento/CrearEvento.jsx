@@ -26,7 +26,7 @@ const CrearEvento = ({ modal }) => {
 	const [name, setName] = useState('');
 	const [info, setInfo] = useState('');
 	const [selectedDate, setSelectedDate] = useState(null);
-	const [time, setTime] = useState('');
+	const [time, setTime] = useState();
 	const [image, setImage] = useState(null);
 	const [file, setFile] = useState(null);
 	const [loadding, setLoadding] = useState(false);
@@ -112,7 +112,11 @@ const CrearEvento = ({ modal }) => {
 								<h2>Nombre del evento</h2>
 								<input
 									type='text'
-									value={editar ? data.fecha : name}
+									defaultValue={
+										editar
+											? data['nombre del evento']
+											: name
+									}
 									onChange={e => setName(e.target.value)}
 									placeholder='Escribe el nombre del evento'
 								/>
@@ -145,6 +149,9 @@ const CrearEvento = ({ modal }) => {
 
 							<DatePicker
 								id='date'
+								defaultValue={
+									editar ? data.fecha : selectedDate
+								}
 								selected={selectedDate}
 								onChange={handleDateChange}
 								dateFormat='yyyy-MM-dd'
@@ -158,7 +165,7 @@ const CrearEvento = ({ modal }) => {
 									<input
 										type='time'
 										placeholder='Coloca la hora del evento'
-										value={time}
+										defaultValue={editar ? data.hora : time}
 										onChange={e => setTime(e.target.value)}
 									/>
 								</label>
@@ -177,7 +184,11 @@ const CrearEvento = ({ modal }) => {
 								cols='70'
 								rows='5'
 								placeholder='Escribe la informacion del evento'
-								value={info}
+								defaultValue={
+									editar
+										? data['informacion del evento']
+										: info
+								}
 								onChange={e => setInfo(e.target.value)}
 							></textarea>
 						</div>
