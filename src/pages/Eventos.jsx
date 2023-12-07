@@ -157,7 +157,12 @@ const Eventos = () => {
 					</section>
 
 					<section className='button-crear-evento'>
-						<button onClick={() => setModal(!modal)}>
+						<button
+							onClick={() => {
+								setModal(!modal);
+								dispatch(setEditar(false));
+							}}
+						>
 							<IoIosAddCircle />
 						</button>
 					</section>

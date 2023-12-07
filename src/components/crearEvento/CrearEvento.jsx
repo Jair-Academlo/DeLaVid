@@ -18,6 +18,7 @@ const CrearEvento = ({ modal }) => {
 	const storage = getStorage(app);
 
 	console.log(data);
+	console.log(editar);
 
 	const [name, setName] = useState('');
 	const [info, setInfo] = useState('');
@@ -28,11 +29,10 @@ const CrearEvento = ({ modal }) => {
 	const [loadding, setLoadding] = useState(false);
 
 	useEffect(() => {
-		if (editar && data) {
+		if (editar) {
 			// Asegúrate de que data esté definido
 			setName(data['nombre del evento']);
 			setInfo(data['informacion del evento']);
-			setSelectedDate('');
 			setTime(data.hora);
 			setImage(data.imagen);
 		} else {
@@ -81,7 +81,9 @@ const CrearEvento = ({ modal }) => {
 					{
 						'time evento': timestamp.getTime().toString(),
 						'nombre del evento': name,
-						fecha: selectedDate.toISOString().split('T')[0],
+						fecha: data.fecha
+							? data.fecha
+							: selectedDate.toISOString().split('T')[0],
 						hora: time,
 						imagen: imageUrl,
 						'informacion del evento': info,
@@ -129,7 +131,7 @@ const CrearEvento = ({ modal }) => {
 								<h2>Nombre del evento</h2>
 								<input
 									type='text'
-									value={name}
+									defaultValue={name}
 									onChange={e => setName(e.target.value)}
 									placeholder='Escribe el nombre del evento'
 								/>
@@ -165,9 +167,7 @@ const CrearEvento = ({ modal }) => {
 
 							<DatePicker
 								id='date'
-								defaultValue={
-									selectedDate ? selectedDate : data.fecha
-								}
+								value={selectedDate ? selectedDate : data.fecha}
 								selected={selectedDate}
 								onChange={handleDateChange}
 								dateFormat='yyyy-MM-dd'
