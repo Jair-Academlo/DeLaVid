@@ -20,8 +20,6 @@ const CrearEvento = ({ modal }) => {
 	const iconImagen =
 		'https://icons-for-free.com/iconfiles/png/512/image+images+photo+picture+pictures+icon-1320191040579947532.png';
 
-	console.log(data);
-
 	const [name, setName] = useState('');
 	const [info, setInfo] = useState('');
 	const [selectedDate, setSelectedDate] = useState(null);
@@ -63,46 +61,85 @@ const CrearEvento = ({ modal }) => {
 		e.preventDefault();
 
 		try {
-			const storageRef = ref(storage, `images/${file.name}`);
-			await uploadBytes(storageRef, file);
-			const imageUrl = await getDownloadURL(storageRef);
+			if (file) {
+				const storageRef = ref(storage, `images/${file.name}`);
+				await uploadBytes(storageRef, file);
+				const imageUrl = await getDownloadURL(storageRef);
 
-			const timestamp = new Date();
+				const timestamp = new Date();
 
-			const id = crypto.randomUUID();
+				const id = crypto.randomUUID();
 
-			setTimeout(async () => {
-				const db = getDatabase(app);
-				await set(
-					DatabaseRef(
-						db,
-						`/projects/proj_cer3wPMCkxSWWePnENPiZL/data/Eventos/${
-							editar ? data.id : id
-						}`
-					),
-					{
-						'time evento': timestamp.getTime().toString(),
-						'nombre del evento': name,
-						fecha: data.fecha
-							? data.fecha
-							: selectedDate.toISOString().split('T')[0],
-						hora: time,
-						imagen: imageUrl,
-						'informacion del evento': info,
-						'id evento': editar ? data.id : id,
-					}
-				);
+				setTimeout(async () => {
+					const db = getDatabase(app);
+					await set(
+						DatabaseRef(
+							db,
+							`/projects/proj_cer3wPMCkxSWWePnENPiZL/data/Eventos/${
+								editar ? data.id : id
+							}`
+						),
+						{
+							'time evento': timestamp.getTime().toString(),
+							'nombre del evento': name,
+							fecha: data.fecha
+								? data.fecha
+								: selectedDate.toISOString().split('T')[0],
+							hora: time,
+							imagen: imageUrl || data.imagen,
+							'informacion del evento': info,
+							'id evento': editar ? data.id : id,
+						}
+					);
 
-				setName('');
-				setInfo('');
-				setSelectedDate(null);
-				setTime('');
-				setImage(null);
-				dispatch(setEditar(false));
-				setLoadding(false);
+					setName('');
+					setInfo('');
+					setSelectedDate(null);
+					setTime('');
+					setImage(null);
+					dispatch(setEditar(false));
+					setLoadding(false);
 
-				modal(false);
-			}, 3000);
+					modal(false);
+				}, 3000);
+			} else {
+				const timestamp = new Date();
+
+				const id = crypto.randomUUID();
+
+				setTimeout(async () => {
+					const db = getDatabase(app);
+					await set(
+						DatabaseRef(
+							db,
+							`/projects/proj_cer3wPMCkxSWWePnENPiZL/data/Eventos/${
+								editar ? data.id : id
+							}`
+						),
+						{
+							'time evento': timestamp.getTime().toString(),
+							'nombre del evento': name,
+							fecha: data.fecha
+								? data.fecha
+								: selectedDate.toISOString().split('T')[0],
+							hora: time,
+							imagen: data.imagen,
+							'informacion del evento': info,
+							'id evento': editar ? data.id : id,
+						}
+					);
+
+					setName('');
+					setInfo('');
+					setSelectedDate(null);
+					setTime('');
+					setImage(null);
+					dispatch(setEditar(false));
+					setLoadding(false);
+
+					modal(false);
+				}, 3000);
+			}
 		} catch (error) {
 			console.error('Error al agregar el evento:', error);
 		}
