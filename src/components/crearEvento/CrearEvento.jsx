@@ -126,15 +126,6 @@ const CrearEvento = ({ modal }) => {
 						onSubmit={newEvent}
 					>
 						<section>
-							<div className='div-nombre-del-evento'>
-								<h2>Nombre del evento</h2>
-								<input
-									type='text'
-									defaultValue={name}
-									onChange={e => setName(e.target.value)}
-									placeholder='Escribe el nombre del evento'
-								/>
-							</div>
 							<div className='div-buttom-del-evento'>
 								<button id='cancelar' onClick={cancelar}>
 									Cancelar
@@ -145,6 +136,17 @@ const CrearEvento = ({ modal }) => {
 								>
 									Guardar
 								</button>
+							</div>
+						</section>
+						<section>
+							<div className='div-nombre-del-evento'>
+								<h2>Nombre del evento</h2>
+								<input
+									type='text'
+									defaultValue={name}
+									onChange={e => setName(e.target.value)}
+									placeholder='Escribe el nombre del evento'
+								/>
 							</div>
 						</section>
 						<div className='div-fecha-del-evento'>
