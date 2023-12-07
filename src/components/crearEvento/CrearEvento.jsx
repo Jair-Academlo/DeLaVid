@@ -32,7 +32,7 @@ const CrearEvento = ({ modal }) => {
 			// Asegúrate de que data esté definido
 			setName(data['nombre del evento']);
 			setInfo(data['informacion del evento']);
-			setSelectedDate(data.fecha ? new Date(data.fecha) : null); // Convierte la fecha a objeto Date si está presente
+			setSelectedDate('');
 			setTime(data.hora);
 			setImage(data.imagen);
 		} else {
@@ -81,7 +81,7 @@ const CrearEvento = ({ modal }) => {
 					{
 						'time evento': timestamp.getTime().toString(),
 						'nombre del evento': name,
-						fecha: selectedDate,
+						fecha: selectedDate.toISOString().split('T')[0],
 						hora: time,
 						imagen: imageUrl,
 						'informacion del evento': info,
@@ -152,17 +152,22 @@ const CrearEvento = ({ modal }) => {
 							<label htmlFor='date'>
 								Selecciona la fecha del evento{' '}
 								<span>
-									{selectedDate &&
-										selectedDate
-											.toISOString()
-											.split('T')[0]}
+									{selectedDate
+										? selectedDate
+												.toISOString()
+												.split('T')[0]
+										: editar
+										? data.fecha
+										: ' '}
 								</span>{' '}
 								<MdDateRange />
 							</label>
 
 							<DatePicker
 								id='date'
-								defaultValue={selectedDate}
+								defaultValue={
+									selectedDate ? selectedDate : data.fecha
+								}
 								selected={selectedDate}
 								onChange={handleDateChange}
 								dateFormat='yyyy-MM-dd'
