@@ -127,7 +127,7 @@ const CrearEvento = ({ modal }) => {
 					>
 						<section>
 							<div className='div-buttom-del-evento'>
-								<button id='cancelar' onClick={cancelar}>
+								<button id='cancelar-evento' onClick={cancelar}>
 									Cancelar
 								</button>
 								<button
@@ -136,6 +136,9 @@ const CrearEvento = ({ modal }) => {
 								>
 									Guardar
 								</button>
+							</div>
+							<div>
+								<img src={data.imagen} alt='' />
 							</div>
 						</section>
 						<section>
@@ -148,63 +151,70 @@ const CrearEvento = ({ modal }) => {
 									placeholder='Escribe el nombre del evento'
 								/>
 							</div>
-						</section>
-						<div className='div-fecha-del-evento'>
-							<h2>Fecha</h2>
+							<div className='div-fecha-del-evento'>
+								<h2>Fecha</h2>
 
-							<label htmlFor='date'>
-								Selecciona la fecha del evento{' '}
-								<span>
-									{selectedDate
-										? selectedDate
-												.toISOString()
-												.split('T')[0]
-										: editar
-										? data.fecha
-										: ' '}
-								</span>{' '}
-								<MdDateRange />
-							</label>
-
-							<DatePicker
-								id='date'
-								value={selectedDate ? selectedDate : data.fecha}
-								selected={selectedDate}
-								onChange={handleDateChange}
-								dateFormat='yyyy-MM-dd'
-							/>
-						</div>
-						<div className='div-hora-del-evento'>
-							<h2>Hora</h2>
-							<div>
-								<label>
-									Coloca la hora del evento{' '}
-									<input
-										type='time'
-										placeholder='Coloca la hora del evento'
-										defaultValue={time}
-										onChange={e => setTime(e.target.value)}
-									/>
+								<label htmlFor='date'>
+									Selecciona la fecha del evento{' '}
+									<span>
+										{selectedDate
+											? selectedDate
+													.toISOString()
+													.split('T')[0]
+											: editar
+											? data.fecha
+											: ' '}
+									</span>{' '}
+									<MdDateRange />
 								</label>
-							</div>
-						</div>
 
-						<div className='div-file-del-evento'>
-							<span>Imagen del evento</span>{' '}
-							<input type='file' onChange={handleFileChange} />
-						</div>
-						<div className='div-informacion-del-evento'>
-							<h2>Informacion:</h2>
-							<textarea
-								name='descripcion'
-								id='descripcion'
-								cols='70'
-								rows='5'
-								placeholder='Escribe la informacion del evento'
-								defaultValue={info}
-								onChange={e => setInfo(e.target.value)}
-							></textarea>
-						</div>
+								<DatePicker
+									id='date'
+									value={
+										selectedDate ? selectedDate : data.fecha
+									}
+									selected={selectedDate}
+									onChange={handleDateChange}
+									dateFormat='yyyy-MM-dd'
+								/>
+							</div>
+							<div className='div-hora-del-evento'>
+								<h2>Hora</h2>
+								<div>
+									<label>
+										Coloca la hora del evento{' '}
+										<input
+											type='time'
+											placeholder='Coloca la hora del evento'
+											defaultValue={time}
+											onChange={e =>
+												setTime(e.target.value)
+											}
+										/>
+									</label>
+								</div>
+							</div>
+
+							<div className='div-file-del-evento'>
+								<span>Imagen del evento</span>{' '}
+								<input
+									type='file'
+									onChange={handleFileChange}
+								/>
+							</div>
+							<div className='div-informacion-del-evento'>
+								<h2>Informacion:</h2>
+								<textarea
+									name='descripcion'
+									id='descripcion'
+									cols='70'
+									rows='5'
+									placeholder='Escribe la informacion del evento'
+									defaultValue={info}
+									onChange={e => setInfo(e.target.value)}
+								></textarea>
+							</div>
+						</section>
 					</form>
 				</div>
 			</>

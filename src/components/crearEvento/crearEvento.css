@@ -15,6 +15,8 @@
 .form-container-eventos {
 	height: 80vh;
 	width: 80%;
+	display: flex;
+	flex-direction: row-reverse;
 	padding: 10px;
 	text-align: left;
 	background: white;
@@ -23,7 +25,9 @@
 }
 
 .form-container-eventos section {
+	width: 50%;
 	display: flex;
+	flex-direction: column;
 }
 
 .form-container-eventos div h2 {
@@ -136,13 +140,13 @@ input#date {
 	font-family: 'Times New Roman', Times, serif;
 }
 
-.div-buttom-del-evento {
+/* .div-buttom-del-evento {
 	display: flex;
 	position: relative;
 	width: 100%;
-}
+} */
 
-.div-buttom-del-evento button {
+/* .div-buttom-del-evento button {
 	position: absolute;
 	top: 10px;
 	right: 20px;
@@ -155,7 +159,7 @@ input#date {
 	cursor: pointer;
 }
 
-#cancelar {
+#cancelar-evento {
 	position: absolute;
 	top: 10px;
 	right: 180px;
@@ -166,4 +170,4 @@ input#date {
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
-}
+} */
