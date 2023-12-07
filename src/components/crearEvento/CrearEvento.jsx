@@ -218,7 +218,7 @@ const CrearEvento = ({ modal }) => {
 								<img
 									src={
 										editar
-											? data.imagen
+											? image || data.imagen
 											: image || iconImagen
 									}
 									alt='imagen'
