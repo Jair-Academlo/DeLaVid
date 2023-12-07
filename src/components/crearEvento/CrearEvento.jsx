@@ -125,7 +125,7 @@ const CrearEvento = ({ modal }) => {
 						className='form-container-eventos'
 						onSubmit={newEvent}
 					>
-						<section>
+						<section className='section-1-form-eventos'>
 							<div className='div-nombre-del-evento'>
 								<h2>Nombre del evento</h2>
 								<input
@@ -199,7 +199,7 @@ const CrearEvento = ({ modal }) => {
 								></textarea>
 							</div>
 						</section>
-						<section>
+						<section className='section-2-form-eventos'>
 							<div className='div-buttom-del-evento'>
 								<button id='cancelar-evento' onClick={cancelar}>
 									Cancelar
@@ -212,7 +212,7 @@ const CrearEvento = ({ modal }) => {
 								</button>
 							</div>
 							<div>
-								<img src={data.imagen} alt='' />
+								<img src={data.imagen} alt='imagen' />
 							</div>
 						</section>
 					</form>

@@ -24,11 +24,12 @@
 	border: 1px #f24726 solid;
 }
 
-.form-container-eventos section {
-	width: 50%;
+.section-1-form-eventos {
+	width: 60%;
 	display: flex;
 	flex-direction: column;
 }
+
 
 .form-container-eventos div h2 {
 	color: black;
@@ -140,16 +141,38 @@ input#date {
 	font-family: 'Times New Roman', Times, serif;
 }
 
-/* .div-buttom-del-evento {
-	display: flex;
-	position: relative;
-	width: 100%;
-} */
 
-/* .div-buttom-del-evento button {
-	position: absolute;
-	top: 10px;
-	right: 20px;
+.section-2-form-eventos {
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+	justify-content: left;
+	gap: 20px;
+
+}
+
+.section-2-form-eventos div {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+}
+
+.section-2-form-eventos div img {
+	width: 200px;
+	height: 200px;
+	border-radius: 20px;
+	object-fit: fill;
+	margin-top: 8rem;
+}
+
+.div-buttom-del-evento {
+	display: flex;
+	width: 100%;
+}
+
+.div-buttom-del-evento button {
 	width: 150px;
 	height: 40px;
 	color: #fff;
@@ -160,14 +183,9 @@ input#date {
 }
 
 #cancelar-evento {
-	position: absolute;
-	top: 10px;
-	right: 180px;
-	width: 150px;
-	height: 40px;
 	color: #fff;
 	background-color: #f22626;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
-} */
+}
