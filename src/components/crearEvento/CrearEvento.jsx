@@ -18,7 +18,6 @@ const CrearEvento = ({ modal }) => {
 	const storage = getStorage(app);
 
 	console.log(data);
-	console.log(editar);
 
 	const [name, setName] = useState('');
 	const [info, setInfo] = useState('');
