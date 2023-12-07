@@ -126,22 +126,6 @@ const CrearEvento = ({ modal }) => {
 						onSubmit={newEvent}
 					>
 						<section>
-							<div className='div-buttom-del-evento'>
-								<button id='cancelar-evento' onClick={cancelar}>
-									Cancelar
-								</button>
-								<button
-									type='submit'
-									onClick={() => setLoadding(true)}
-								>
-									Guardar
-								</button>
-							</div>
-							<div>
-								<img src={data.imagen} alt='' />
-							</div>
-						</section>
-						<section>
 							<div className='div-nombre-del-evento'>
 								<h2>Nombre del evento</h2>
 								<input
@@ -213,6 +197,22 @@ const CrearEvento = ({ modal }) => {
 									defaultValue={info}
 									onChange={e => setInfo(e.target.value)}
 								></textarea>
+							</div>
+						</section>
+						<section>
+							<div className='div-buttom-del-evento'>
+								<button id='cancelar-evento' onClick={cancelar}>
+									Cancelar
+								</button>
+								<button
+									type='submit'
+									onClick={() => setLoadding(true)}
+								>
+									Guardar
+								</button>
+							</div>
+							<div>
+								<img src={data.imagen} alt='' />
 							</div>
 						</section>
 					</form>
