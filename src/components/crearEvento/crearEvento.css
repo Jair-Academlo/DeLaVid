@@ -173,6 +173,7 @@ input#date {
 }
 
 .div-buttom-del-evento button {
+	margin-top: 10px;
 	width: 150px;
 	height: 40px;
 	color: #fff;

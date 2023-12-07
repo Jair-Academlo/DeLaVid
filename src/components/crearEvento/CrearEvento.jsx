@@ -17,6 +17,9 @@ const CrearEvento = ({ modal }) => {
 	const dispatch = useDispatch();
 	const storage = getStorage(app);
 
+	const iconImagen =
+		'https://icons-for-free.com/iconfiles/png/512/image+images+photo+picture+pictures+icon-1320191040579947532.png';
+
 	console.log(data);
 
 	const [name, setName] = useState('');
@@ -212,7 +215,14 @@ const CrearEvento = ({ modal }) => {
 								</button>
 							</div>
 							<div>
-								<img src={data.imagen} alt='imagen' />
+								<img
+									src={
+										editar
+											? data.imagen
+											: image || iconImagen
+									}
+									alt='imagen'
+								/>
 							</div>
 						</section>
 					</form>
