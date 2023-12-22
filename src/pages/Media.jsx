@@ -9,7 +9,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { setData } from '../store/data/dataSlice';
 import { setEditar } from '../store/data/editarSlice';
 import { useDispatch } from 'react-redux';
-import N1 from '../imgs/logo.png';
 import '../styles/media.css';
 
 const Media = () => {
@@ -52,6 +51,48 @@ const Media = () => {
 		fetchData();
 	}, [modal]);
 
+	const eliminarMediaVideo = id => {
+		const refPath =
+			'/projects/proj_cer3wPMCkxSWWePnENPiZL/data/Media/' + id;
+
+		remove(ref(database, refPath))
+			.then(() => {
+				const fetchData = async () => {
+					try {
+						const dbRef = ref(getDatabase());
+						const snapshot = await get(
+							child(
+								dbRef,
+								'projects/proj_cer3wPMCkxSWWePnENPiZL/data/Eventos'
+							)
+						);
+
+						if (snapshot.exists()) {
+							const data = snapshot.val();
+							const dataArray = Object.entries(data).map(
+								([key, value], index) => ({
+									serial: index,
+									id: key,
+									...value,
+								})
+							);
+							setMediaVideoData(dataArray);
+						} else {
+							console.log(
+								'No hay datos en la colección "Eventos"'
+							);
+						}
+					} catch (error) {
+						console.error('Error al obtener los datos:', error);
+					}
+				};
+				fetchData();
+			})
+			.catch(error => {
+				console.error('Error al eliminar el evento:', error);
+			});
+	};
+
 	const editarMediaVideo = data => {
 		setModal(!modal);
 		dispatch(setData(data));
@@ -69,87 +110,66 @@ const Media = () => {
 			) : (
 				<div>
 					<section>
-						<div
-							className='container-media-card'
-							onClick={() => {
-								navigate(`/media/${id}`);
-							}}
-						>
-							<div className='div-media-imagen'>
-								<img src={N1} alt='imagen' />
-							</div>
-							<div className='div-media-descripcion'>
-								<p>Nombre del Video</p>
-								<p>Autor</p>
-								<p>{new Date().toLocaleDateString()}</p>
-							</div>
-							<div className='div-media-button'>
-								<button id='editar'>
-									Editar
-									<span>
-										<MdEdit />
-									</span>
-								</button>
-								<button id='eliminar'>
-									Eliminar{' '}
-									<span>
-										<BsFillTrashFill />{' '}
-									</span>
-								</button>
-							</div>
-						</div>
-						<div className='container-media-card'>
-							<div className='div-media-imagen'>
-								<img src={N1} alt='imagen' />
-							</div>
-							<div className='div-media-descripcion'>
-								<p>Nombre del Video</p>
-								<p>Autor</p>
-								<p>{new Date().toLocaleDateString()}</p>
-							</div>
-							<div className='div-media-button'>
-								<button id='editar'>
-									Editar{' '}
-									<span>
-										<MdEdit />
-									</span>
-								</button>
-								<button id='eliminar'>
-									Eliminar
-									<span>
-										<BsFillTrashFill />{' '}
-									</span>
-								</button>
-							</div>
-						</div>
-						<div className='container-media-card'>
-							<div className='div-media-imagen'>
-								<img src={N1} alt='imagen' />
-							</div>
-							<div className='div-media-descripcion'>
-								<p>Nombre del Video</p>
-								<p>Autor</p>
-								<p>{new Date().toLocaleDateString()}</p>
-							</div>
-							<div className='div-media-button'>
-								<button id='editar'>
-									Editar{' '}
-									<span>
-										<MdEdit />
-									</span>
-								</button>
-								<button id='eliminar'>
-									Eliminar{' '}
-									<span>
-										<BsFillTrashFill />{' '}
-									</span>
-								</button>
-							</div>
-						</div>
+						{mediaVideoData.map(video => (
+							<>
+								<div
+									key={video.id}
+									className='container-media-card'
+									onClick={() => {
+										navigate(`/media/${id}`);
+										dirigirDetallesMediaVideo(video);
+									}}
+								>
+									<div className='div-media-imagen'>
+										<img src={video.imagen} alt='imagen' />
+									</div>
+									<div className='div-media-descripcion'>
+										<p>{video['titulo audio']}</p>
+										<p>{video['autor del audio']}</p>
+										<p>
+											{new Date().toLocaleDateString(
+												video.fecha
+											)}
+										</p>
+									</div>
+									<div className='div-media-button'>
+										<button
+											id='editar'
+											onClick={e => {
+												e.stopPropagation();
+												editarMediaVideo(video);
+											}}
+										>
+											Editar
+											<span>
+												<MdEdit />
+											</span>
+										</button>
+										<button
+											id='eliminar'
+											onClick={e => {
+												e.stopPropagation();
+												eliminarMediaVideo(video.id);
+											}}
+										>
+											Eliminar{' '}
+											<span>
+												<BsFillTrashFill />{' '}
+											</span>
+										</button>
+									</div>
+								</div>
+							</>
+						))}
 					</section>
 
 					<section className='button-crear-media'>
-						<button onClick={() => setModal(!modal)}>
+						<button
+							onClick={() => {
+								setModal(!modal);
+								dispatch(setEditar(false));
+							}}
+						>
 							<IoIosAddCircle />
 						</button>
 					</section>
