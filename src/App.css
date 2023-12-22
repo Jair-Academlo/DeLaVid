@@ -5,14 +5,16 @@ body {
 	background-color: #fff;
 	text-align: center;
 }
+
 .container-app {
 	display: flex;
 }
 
 .panel-app {
-	width: 25%;
+	width: 20%;
 }
 
 .routes-app {
-	width: 75%;
+	width: 80%;
+	background-color: #f8f9fa
 }

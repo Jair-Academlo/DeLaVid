@@ -1,11 +1,11 @@
 .aside-panel {
 	background-color: rgba(255, 255, 255, 0.3);
 	backdrop-filter: blur(10px);
-	height: 95vh;
-	border-right: 1px lightgray solid;
+	border-right: 1px orangered solid;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+
 }
 
 .section-profile-aside-panel {
@@ -15,7 +15,7 @@
 	align-items: center;
 	width: 80%;
 	height: 40vh;
-	border: 1px lightblue solid;
+	border: 1px #fff;
 	margin-top: 20px;
 	margin-bottom: 10px;
 	background-color: rgba(255, 255, 255, 0.1);

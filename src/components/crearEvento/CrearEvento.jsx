@@ -122,7 +122,7 @@ const CrearEvento = ({ modal }) => {
 							fecha: data.fecha
 								? data.fecha
 								: selectedDate.toISOString().split('T')[0],
-							hora: time,
+							hora: new Date().toLocaleString(time),
 							imagen: data.imagen,
 							'informacion del evento': info,
 							'id evento': editar ? data.id : id,
