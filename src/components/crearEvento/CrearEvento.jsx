@@ -18,7 +18,7 @@ const CrearEvento = ({ modal }) => {
 	const storage = getStorage(app);
 
 	const iconImagen =
-		'https://icons-for-free.com/iconfiles/png/512/image+images+photo+picture+pictures+icon-1320191040579947532.png';
+		'https://cdn-icons-png.flaticon.com/512/1055/1055650.png';
 
 	const [name, setName] = useState('');
 	const [info, setInfo] = useState('');
