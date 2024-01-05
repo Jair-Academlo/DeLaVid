@@ -1,6 +1,5 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../imgs/logo.png';
-
 import {
 	MdEmojiEvents,
 	MdArticle,
@@ -8,10 +7,26 @@ import {
 	MdNotificationsActive,
 } from 'react-icons/md';
 import { TiMediaPlay } from 'react-icons/ti';
+import { auth } from '../config/firebase';
 
 import '../styles/panel.css';
 
-const Panel = () => {
+// eslint-disable-next-line react/prop-types
+const Panel = ({ onLogout }) => {
+	const navigate = useNavigate();
+
+	const logout = () => {
+		auth.signOut()
+			.then(() => {
+				localStorage.setItem('userToken', 'false');
+				onLogout();
+				navigate('/', { replace: true });
+			})
+			.catch(error => {
+				// An error happened.
+				console.error('Error al cerrar sesión:', error);
+			});
+	};
 	return (
 		<>
 			<aside className='aside-panel'>
@@ -19,7 +34,7 @@ const Panel = () => {
 					<img src={logo} alt='logo' width={150} height={150} />
 					<p>admin@lavidacayucan.com</p>
 					<div>
-						<button>Cerrar Sesión</button>
+						<button onClick={() => logout()}>Cerrar Session</button>
 					</div>
 				</section>
 				<section className='section-icons-aside-panel'>

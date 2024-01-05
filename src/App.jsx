@@ -26,6 +26,10 @@ const App = () => {
 		setAuthenticated(true);
 	};
 
+	const handleLogout = () => {
+		setAuthenticated(false);
+	};
+
 	return (
 		<>
 			<HashRouter>
@@ -33,7 +37,7 @@ const App = () => {
 					<>
 						<div className='container-app'>
 							<div className='panel-app'>
-								<Panel />
+								<Panel onLogout={handleLogout} />
 							</div>
 							<div className='routes-app'>
 								<Navbar />
