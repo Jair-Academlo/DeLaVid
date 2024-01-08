@@ -39,7 +39,11 @@ const Media = () => {
 							...value,
 						})
 					);
-					setMediaVideoData(dataArray);
+
+					const filterData = dataArray.filter(
+						data => data.categoria === 'Devocionales'
+					);
+					setMediaVideoData(filterData);
 				} else {
 					console.log('No hay datos en la colección "Media"');
 				}

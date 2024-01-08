@@ -39,6 +39,7 @@ const CrearMedia = ({ modal }) => {
 						<input
 							type='text'
 							placeholder='Selecciona una categoria'
+							value='Devocionales'
 						/>
 					</div>
 
