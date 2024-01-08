@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { getStorage } from 'firebase/storage';
 import { app } from '../../config/firebase';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './crearMedia.css';
 
 // eslint-disable-next-line react/prop-types
@@ -18,6 +18,23 @@ const CrearMedia = ({ modal }) => {
 	const [file, setFile] = useState(null);
 	const [urlVideo, setUrlVideo] = useState('');
 	const [loadding, setLoadding] = useState(false);
+
+	useEffect(() => {
+		if (editar) {
+			// Asegúrate de que data esté definido
+			setTitulo(data['titulo audio']);
+			setAutor(data['autor del audio']);
+			setDescripcion(data['descripcion del mensaje']);
+			setImage(data.imagen);
+			setUrlVideo(data.url_video);
+		} else {
+			setTitulo('');
+			setAutor('');
+			setDescripcion('');
+			setImage('');
+			setUrlVideo('');
+		}
+	}, [editar, data]);
 
 	console.log(data);
 	return (
