@@ -62,8 +62,6 @@ const CrearMedia = ({ modal }) => {
 
 				const timestamp = new Date();
 
-				console.log('timestamp', timestamp);
-
 				const id = crypto.randomUUID();
 
 				setTimeout(async () => {
@@ -100,7 +98,43 @@ const CrearMedia = ({ modal }) => {
 					modal(false);
 				}, 3000);
 			} else {
-				alert('selecciona una imagen');
+				const timestamp = new Date();
+
+				const id = crypto.randomUUID();
+
+				setTimeout(async () => {
+					const db = getDatabase(app);
+					await set(
+						DatabaseRef(
+							db,
+							`/projects/proj_cer3wPMCkxSWWePnENPiZL/data/Media/${
+								editar ? data['id audio'] : id
+							}`
+						),
+						{
+							'autor del audio': autor,
+							categoria: 'Devocionales',
+							'categoria id':
+								'97e99260-d31e-11ed-88a9-ab01ab800b22',
+							'descripcion del mensaje': descripcion,
+							fecha: timestamp.getTime(),
+							'id audio': editar ? data['id audio'] : id,
+							imagen: data.imagen,
+							'titulo audio': titulo,
+							url_video: urlVideo,
+						}
+					);
+
+					setTitulo('');
+					setAutor('');
+					setDescripcion('');
+					setImage('');
+					setUrlVideo('');
+					dispatch(setEditar(false));
+					setLoadding(false);
+
+					modal(false);
+				}, 3000);
 			}
 		} catch (error) {
 			console.error('Error al agregar el evento:', error);
