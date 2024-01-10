@@ -1,6 +1,7 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { getStorage } from 'firebase/storage';
+import { getDownloadURL, getStorage, uploadBytes, ref } from 'firebase/storage';
+import { getDatabase, ref as DatabaseRef, set } from 'firebase/database';
 import { app } from '../../config/firebase';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { setEditar } from '../../store/data/editarSlice';
 import IsLoadding from '../isLoadding/IsLoadding';
@@ -41,6 +42,69 @@ const CrearMedia = ({ modal }) => {
 		}
 	}, [editar, data]);
 
+	const handleFileChange = e => {
+		const selectedFile = e.target.files[0];
+		if (selectedFile) {
+			setFile(selectedFile);
+			const imgUrl = URL.createObjectURL(selectedFile);
+			setImage(imgUrl);
+		}
+	};
+
+	const newEvent = async e => {
+		e.preventDefault();
+
+		try {
+			if (file) {
+				const storageRef = ref(storage, `images/${file.name}`);
+				await uploadBytes(storageRef, file);
+				const imageUrl = await getDownloadURL(storageRef);
+
+				const timestamp = new Date();
+
+				const id = crypto.randomUUID();
+
+				setTimeout(async () => {
+					const db = getDatabase(app);
+					await set(
+						DatabaseRef(
+							db,
+							`/projects/proj_cer3wPMCkxSWWePnENPiZL/data/Media/${
+								editar ? data['id audio'] : id
+							}`
+						),
+						{
+							'autor del audio': autor,
+							categoria: 'Devocionales',
+							'categoria id':
+								'97e99260-d31e-11ed-88a9-ab01ab800b22',
+							'descripcion del mensaje': descripcion,
+							fecha: new Date(timestamp).toLocaleDateString,
+							'id audio': editar ? data['id audio'] : id,
+							imagen: imageUrl || data.imagen,
+							'titulo audio': titulo,
+							url_video: urlVideo,
+						}
+					);
+
+					setTitulo('');
+					setAutor('');
+					setDescripcion('');
+					setImage('');
+					setUrlVideo('');
+					dispatch(setEditar(false));
+					setLoadding(false);
+
+					modal(false);
+				}, 3000);
+			} else {
+				alert('selecciona una imagen');
+			}
+		} catch (error) {
+			console.error('Error al agregar el evento:', error);
+		}
+	};
+
 	const cancelar = () => {
 		setTitulo('');
 		setAutor('');
@@ -56,9 +120,7 @@ const CrearMedia = ({ modal }) => {
 			{loadding && <IsLoadding />}
 
 			<div className='container-modal-media'>
-				<form
-					className='form-container-media' /* onSubmit={newEvent} */
-				>
+				<form className='form-container-media' onSubmit={newEvent}>
 					<section className='section-1-form-media'>
 						<div className='div-nombre-del-evento'>
 							<h2>Autor</h2>
@@ -96,7 +158,8 @@ const CrearMedia = ({ modal }) => {
 						</div>
 
 						<div className='div-file-del-media'>
-							<span>Imagen de Portada</span> <input type='file' />
+							<span>Imagen de Portada</span>{' '}
+							<input type='file' onChange={handleFileChange} />
 						</div>
 						<div className='div-nombre-del-media'>
 							<h2>Escribe la url del video</h2>
