@@ -4,6 +4,7 @@ import { app } from '../../config/firebase';
 import { useEffect, useState } from 'react';
 import './crearMedia.css';
 import IsLoadding from '../isLoadding/IsLoadding';
+import { setEditar } from '../../store/data/editarSlice';
 
 // eslint-disable-next-line react/prop-types
 const CrearMedia = ({ modal }) => {
@@ -37,7 +38,16 @@ const CrearMedia = ({ modal }) => {
 		}
 	}, [editar, data]);
 
-	console.log(data);
+	const cancelar = () => {
+		setTitulo('');
+		setAutor('');
+		setDescripcion('');
+		setImage('');
+		setUrlVideo('');
+		dispatch(setEditar(false));
+		modal(false);
+	};
+
 	return (
 		<>
 			{loadding && <IsLoadding />}
@@ -99,7 +109,8 @@ const CrearMedia = ({ modal }) => {
 					</section>
 					<section className='section-2-form-media'>
 						<div className='div-buttom-del-media'>
-							<button /* onClick={cancelar} */
+							<button
+								onClick={cancelar}
 								id='cancelar-click-media'
 							>
 								Cancelar
