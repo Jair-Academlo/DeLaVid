@@ -15,6 +15,8 @@
 .form-container-media {
 	height: 80vh;
 	width: 80%;
+	display: flex;
+	flex-direction: row;
 	padding: 10px;
 	text-align: left;
 	background: white;
@@ -22,13 +24,15 @@
 	border: 1px #f24726 solid;
 }
 
-.form-container-media section {
+.section-1-form-media {
+	width: 60%;
 	display: flex;
+	flex-direction: column;
 }
 
 .form-container-media div h2 {
 	color: black;
-	font-size: 0.8rem;
+	font-size: 0.9rem;
 	font-weight: 700;
 }
 
@@ -76,16 +80,40 @@
 	font-family: 'Times New Roman', Times, serif;
 }
 
+.section-2-form-media {
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+	justify-content: left;
+	gap: 20px;
+
+}
+
+
+.section-2-form-media div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+}
+
+
+.section-2-form-media div img {
+	width: 300px;
+	height: 300px;
+	border-radius: 20px;
+	object-fit: fill;
+	margin-top: 3.5rem;
+}
+
 .div-buttom-del-media {
 	display: flex;
-	position: relative;
+	flex-direction: row;
 	width: 100%;
 }
 
 .div-buttom-del-media button {
-	position: absolute;
-	top: 10px;
-	right: 20px;
+	margin-top: 10px;
 	width: 150px;
 	height: 40px;
 	color: #fff;
@@ -95,12 +123,7 @@
 	cursor: pointer;
 }
 
-#cancelar {
-	position: absolute;
-	top: 10px;
-	right: 180px;
-	width: 150px;
-	height: 40px;
+#cancelar-click-media {
 	color: #fff;
 	background-color: #f22626;
 	border: none;
