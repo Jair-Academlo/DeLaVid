@@ -67,7 +67,7 @@ const Media = () => {
 						const snapshot = await get(
 							child(
 								dbRef,
-								'projects/proj_cer3wPMCkxSWWePnENPiZL/data/Eventos'
+								'projects/proj_cer3wPMCkxSWWePnENPiZL/data/Media'
 							)
 						);
 
@@ -107,6 +107,8 @@ const Media = () => {
 		dispatch(setData(data));
 	};
 
+	const data = mediaVideoData?.sort((a, b) => b.fecha - a.fecha);
+
 	return (
 		<>
 			{modal ? (
@@ -114,7 +116,7 @@ const Media = () => {
 			) : (
 				<div>
 					<section>
-						{mediaVideoData.map(video => (
+						{data.map(video => (
 							<>
 								<div
 									key={video.id}
@@ -131,9 +133,9 @@ const Media = () => {
 										<p>{video['titulo audio']}</p>
 										<p>{video['autor del audio']}</p>
 										<p>
-											{new Date().toLocaleDateString(
-												video.fecha
-											)}
+											{new Date(
+												video?.fecha
+											).toLocaleDateString()}
 										</p>
 									</div>
 									<div className='div-media-button'>

@@ -62,6 +62,8 @@ const CrearMedia = ({ modal }) => {
 
 				const timestamp = new Date();
 
+				console.log('timestamp', timestamp);
+
 				const id = crypto.randomUUID();
 
 				setTimeout(async () => {
@@ -79,7 +81,7 @@ const CrearMedia = ({ modal }) => {
 							'categoria id':
 								'97e99260-d31e-11ed-88a9-ab01ab800b22',
 							'descripcion del mensaje': descripcion,
-							fecha: new Date(timestamp).toLocaleDateString,
+							fecha: timestamp.getTime(),
 							'id audio': editar ? data['id audio'] : id,
 							imagen: imageUrl || data.imagen,
 							'titulo audio': titulo,
@@ -122,6 +124,17 @@ const CrearMedia = ({ modal }) => {
 			<div className='container-modal-media'>
 				<form className='form-container-media' onSubmit={newEvent}>
 					<section className='section-1-form-media'>
+						<div className='div-nombre-del-evento'>
+							<h2>Titulo</h2>
+							<input
+								type='text'
+								placeholder='Autor'
+								defaultValue={titulo}
+								onChange={e => {
+									setTitulo(e.target.value);
+								}}
+							/>
+						</div>
 						<div className='div-nombre-del-evento'>
 							<h2>Autor</h2>
 							<input
