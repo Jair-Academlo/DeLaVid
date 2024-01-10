@@ -2,12 +2,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getStorage } from 'firebase/storage';
 import { app } from '../../config/firebase';
 import { useEffect, useState } from 'react';
-import './crearMedia.css';
-import IsLoadding from '../isLoadding/IsLoadding';
 import { setEditar } from '../../store/data/editarSlice';
+import IsLoadding from '../isLoadding/IsLoadding';
+import './crearMedia.css';
 
 // eslint-disable-next-line react/prop-types
 const CrearMedia = ({ modal }) => {
+	const iconImagen =
+		'https://cdn-icons-png.flaticon.com/512/1055/1055650.png';
+
 	const data = useSelector(state => state.data);
 	const editar = useSelector(state => state.editar);
 	const dispatch = useDispatch();
@@ -126,8 +129,8 @@ const CrearMedia = ({ modal }) => {
 							<img
 								src={
 									editar
-										? image || data.imagen
-										: image || 'iconImagen'
+										? image || data?.imagen
+										: image || iconImagen
 								}
 								alt='imagen'
 							/>
