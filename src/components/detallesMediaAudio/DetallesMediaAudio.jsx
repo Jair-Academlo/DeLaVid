@@ -1,28 +1,34 @@
 import { useNavigate } from 'react-router-dom';
 import { IoArrowBackCircleOutline } from 'react-icons/io5';
-import { FaCirclePlay } from 'react-icons/fa6';
-import { AiFillBackward, AiFillFastForward } from 'react-icons/ai';
-
-import N1 from '../../imgs/logo.png';
+import { useSelector } from 'react-redux';
 import './detallesMediaAudio.css';
 
 const DetallesMediaAudio = () => {
 	const navigate = useNavigate();
+	const data = useSelector(state => state.data);
 	return (
 		<>
 			<div className='container-ver-detalles-media'>
 				<section className='section-form-ver-detalles-del-media'>
 					<div>
-						<p>Titulo del audio</p>
-						<input type='text' value='Alabanzas' />
+						<p>Titulo del video</p>
+						<input
+							type='text'
+							value={data['titulo audio']}
+							readOnly
+						/>
 					</div>
 					<div>
-						<p>Autor del audio</p>
-						<input type='text' value='Jair Rincon' />
+						<p>Autor del video</p>
+						<input
+							type='text'
+							value={data['autor del audio']}
+							readOnly
+						/>
 					</div>
 					<div>
 						<p>Categoria</p>
-						<input type='text' value='Semana Santa' />
+						<input type='text' value={data.categoria} readOnly />
 					</div>
 
 					<div>
@@ -30,32 +36,20 @@ const DetallesMediaAudio = () => {
 						<textarea
 							cols='30'
 							rows='10'
-							value='Esto es un mensaje de prueba'
+							value={data['descripcion del mensaje']}
+							readOnly
 						></textarea>
 					</div>
 				</section>
 				<section className='section-img-ver-detalles-del-media'>
 					<div>
-						<p>Reprodcutor del audio</p>
+						<p>Imagen del Audio</p>
 						<div>
 							<img
 								id='imagen-video-detalles-media'
-								src={N1}
+								src={data.imagen}
 								alt='imagen'
-								width={300}
-								height={300}
 							/>
-						</div>
-						<div className='div-reproductor-detalles-media'>
-							<span>
-								<AiFillBackward className='icons-reprodcutor-detalles-media' />
-							</span>
-							<span>
-								<FaCirclePlay className='icons-reprodcutor-detalles-media' />
-							</span>
-							<span>
-								<AiFillFastForward className='icons-reprodcutor-detalles-media' />
-							</span>
 						</div>
 					</div>
 

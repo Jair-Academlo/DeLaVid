@@ -122,7 +122,7 @@ const MediaAudio = () => {
 									key={audio.id}
 									className='container-media-card'
 									onClick={() => {
-										navigate(`/media/${id}`);
+										navigate(`/mediaAudio/${id}`);
 										dirigirDetallesMediaAudio(audio);
 									}}
 								>
