@@ -1,7 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import { IoArrowBackCircleOutline } from 'react-icons/io5';
-import { FaCirclePlay } from 'react-icons/fa6';
-import { AiFillBackward, AiFillFastForward } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 
 import './detallesMedia.css';
@@ -46,26 +44,13 @@ const DetallesMedia = () => {
 				</section>
 				<section className='section-img-ver-detalles-del-media'>
 					<div>
-						<p>Reprodcutor del video</p>
+						<p>Imagen del video</p>
 						<div>
 							<img
 								id='imagen-video-detalles-media'
 								src={data.imagen}
 								alt='imagen'
-								width={300}
-								height={300}
 							/>
-						</div>
-						<div className='div-reproductor-detalles-media'>
-							<span>
-								<AiFillBackward className='icons-reprodcutor-detalles-media' />
-							</span>
-							<span>
-								<FaCirclePlay className='icons-reprodcutor-detalles-media' />
-							</span>
-							<span>
-								<AiFillFastForward className='icons-reprodcutor-detalles-media' />
-							</span>
 						</div>
 					</div>
 
