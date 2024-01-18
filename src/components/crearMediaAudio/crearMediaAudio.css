@@ -1,0 +1,132 @@
+.container-modal-media-audio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(1, 1, 1, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.form-container-media-audio {
+    height: 80vh;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    text-align: left;
+    background: white;
+    border-radius: 20px;
+    border: 1px #f24726 solid;
+}
+
+.section-1-form-media-audio {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container-media-audio div h2 {
+    color: black;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.form-container-media-audio div p {
+    font-size: 0.7rem;
+    font-weight: 400;
+}
+
+.div-nombre-del-media {
+    width: 300px;
+}
+
+.div-nombre-del-media input {
+    font-size: 0.7rem;
+    width: 261px;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px lightgray solid;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.div-file-del-media {
+    margin: 20px 0;
+}
+
+.div-file-del-media span {
+    text-align: center;
+    color: grey;
+    font-size: 0.9rem;
+    margin-right: 20px;
+}
+
+.div-file-del-media input {
+    font-size: 0.8rem;
+    color: gray;
+}
+
+.div-informacion-del-media textarea {
+    border: 1px lightgrey solid;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 0.7rem;
+    outline: none;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.section-2-form-media {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    gap: 20px;
+
+}
+
+
+.section-2-form-media div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+.section-2-form-media div img {
+    width: 300px;
+    height: 300px;
+    border-radius: 20px;
+    object-fit: fill;
+    margin-top: 3.5rem;
+}
+
+.div-buttom-del-media {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.div-buttom-del-media button {
+    margin-top: 10px;
+    width: 150px;
+    height: 40px;
+    color: #fff;
+    background-color: #f24726;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#cancelar-click-media {
+    color: #fff;
+    background-color: #f22626;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

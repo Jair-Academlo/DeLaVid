@@ -211,7 +211,7 @@ const CrearMedia = ({ modal }) => {
 							/>
 						</div>
 
-						<div className='div-file-del-media-1'>
+						<div className='div-file-del-media-'>
 							<span>Audio</span>{' '}
 							<input
 								type='file'
