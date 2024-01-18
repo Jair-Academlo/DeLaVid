@@ -11,7 +11,7 @@ const DetallesMediaAudio = () => {
 			<div className='container-ver-detalles-media'>
 				<section className='section-form-ver-detalles-del-media'>
 					<div>
-						<p>Titulo del video</p>
+						<p>Titulo del Audio</p>
 						<input
 							type='text'
 							value={data['titulo audio']}
@@ -19,7 +19,7 @@ const DetallesMediaAudio = () => {
 						/>
 					</div>
 					<div>
-						<p>Autor del video</p>
+						<p>Autor del Audio</p>
 						<input
 							type='text'
 							value={data['autor del audio']}
