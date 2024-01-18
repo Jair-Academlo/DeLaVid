@@ -1,4 +1,4 @@
-import CrearMedia from '../components/crearMedia/CrearMedia';
+import CrearMediaAudio from '../components/crearMediaAudio/CrearMediaAudio';
 import { getDatabase, ref, child, get, remove } from 'firebase/database';
 import { database } from '../config/firebase';
 import { BsFillTrashFill } from 'react-icons/bs';
@@ -112,7 +112,7 @@ const MediaAudio = () => {
 	return (
 		<>
 			{modal ? (
-				<CrearMedia modal={setModal} />
+				<CrearMediaAudio modal={setModal} />
 			) : (
 				<div>
 					<section>
