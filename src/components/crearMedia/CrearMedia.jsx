@@ -159,10 +159,10 @@ const CrearMedia = ({ modal }) => {
 				<form className='form-container-media' onSubmit={newEvent}>
 					<section className='section-1-form-media'>
 						<div className='div-nombre-del-evento'>
-							<h2>Titulo</h2>
+							<h2>Título</h2>
 							<input
 								type='text'
-								placeholder='Autor'
+								placeholder='Título'
 								defaultValue={titulo}
 								onChange={e => {
 									setTitulo(e.target.value);
