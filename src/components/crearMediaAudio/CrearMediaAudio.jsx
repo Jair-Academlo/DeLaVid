@@ -27,7 +27,6 @@ const CrearMedia = ({ modal, categoriasList }) => {
 	const [descripcion, setDescripcion] = useState('');
 	const [image, setImage] = useState(null);
 	const [file, setFile] = useState(null);
-	const [urlVideo, setUrlVideo] = useState('');
 	const [loadding, setLoadding] = useState(false);
 
 	const filtercategory = categoriasList;
@@ -39,13 +38,11 @@ const CrearMedia = ({ modal, categoriasList }) => {
 			setAutor(data['autor del audio']);
 			setDescripcion(data['descripcion del mensaje']);
 			setImage(data.imagen);
-			setUrlVideo(data.url_video);
 		} else {
 			setTitulo('');
 			setAutor('');
 			setDescripcion('');
 			setImage('');
-			setUrlVideo('');
 		}
 	}, [editar, data]);
 
@@ -91,7 +88,7 @@ const CrearMedia = ({ modal, categoriasList }) => {
 							imagen: imageUrl || data.imagen,
 							'titulo audio': titulo,
 							duracion: '',
-							url_audio: urlVideo,
+							url_audio: ' urlVideo',
 						}
 					);
 
@@ -130,7 +127,7 @@ const CrearMedia = ({ modal, categoriasList }) => {
 							imagen: data.imagen,
 							'titulo audio': titulo,
 							duracion: '',
-							url_audio: urlVideo,
+							url_audio: 'urlVideo',
 						}
 					);
 
@@ -138,7 +135,6 @@ const CrearMedia = ({ modal, categoriasList }) => {
 					setAutor('');
 					setDescripcion('');
 					setImage('');
-					setUrlVideo('');
 					dispatch(setEditar(false));
 					setLoadding(false);
 
@@ -205,7 +201,19 @@ const CrearMedia = ({ modal, categoriasList }) => {
 						</div>
 						<div className='div-nombre-del-media'>
 							<h2>Categoria</h2>
+
 							<select name='' id=''>
+								<option
+									value={
+										editar
+											? data['id audio']
+											: 'selecciona una categoria'
+									}
+								>
+									{editar
+										? data?.categoria
+										: 'selecciona una categoria'}
+								</option>
 								{filtercategory.map(categoria => (
 									<option
 										value={categoria}
@@ -231,10 +239,6 @@ const CrearMedia = ({ modal, categoriasList }) => {
 								<AiFillFastBackward /> <AiFillPlayCircle />{' '}
 								<AiFillFastForward />
 							</label>
-						</div>
-						<div className='div-file-del-media'>
-							<span>Imagen de Portada</span>{' '}
-							<input type='file' onChange={handleFileChange} />
 						</div>
 					</section>
 					<section className='section-2-form-media'>
