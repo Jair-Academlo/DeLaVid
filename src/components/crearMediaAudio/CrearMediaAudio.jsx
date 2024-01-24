@@ -27,6 +27,8 @@ const CrearMedia = ({ modal, categoriasList }) => {
 	const [descripcion, setDescripcion] = useState('');
 	const [image, setImage] = useState(null);
 	const [file, setFile] = useState(null);
+	const [selectedFile, setSelectedFile] = useState(null);
+
 	const [loadding, setLoadding] = useState(false);
 
 	const filtercategory = categoriasList;
@@ -55,14 +57,39 @@ const CrearMedia = ({ modal, categoriasList }) => {
 		}
 	};
 
-	const newEvent = async e => {
+	const handleFileChangeMp3 = event => {
+		const file = event.target.files[0];
+		setSelectedFile(file);
+	};
+
+	/* 	const newEvent = async e => {
 		e.preventDefault();
 
 		try {
+			switch (null) {
+				case file:
+					alert('selecciona una imagen de portada');
+					break;
+
+				case selectedFile:
+					alert('selecciona un archivo de audio');
+					break;
+
+				default:
+		
+
 			if (file) {
 				const storageRef = ref(storage, `images/${file.name}`);
 				await uploadBytes(storageRef, file);
 				const imageUrl = await getDownloadURL(storageRef);
+
+				const storageRefMp3 = ref(
+					storage,
+					`audios/${selectedFile.name}`
+				);
+
+				await uploadBytes(storageRefMp3, selectedFile);
+				const Mp3 = await getDownloadURL(storageRefMp3);
 
 				const timestamp = new Date();
 
@@ -88,7 +115,7 @@ const CrearMedia = ({ modal, categoriasList }) => {
 							imagen: imageUrl || data.imagen,
 							'titulo audio': titulo,
 							duracion: '',
-							url_audio: ' urlVideo',
+							url_audio: Mp3,
 						}
 					);
 
@@ -96,7 +123,6 @@ const CrearMedia = ({ modal, categoriasList }) => {
 					setAutor('');
 					setDescripcion('');
 					setImage('');
-					setUrlVideo('');
 					dispatch(setEditar(false));
 					setLoadding(false);
 
@@ -144,6 +170,58 @@ const CrearMedia = ({ modal, categoriasList }) => {
 		} catch (error) {
 			console.error('Error al agregar el evento:', error);
 		}
+		}
+		break;
+	}; */
+
+	const newEvent = async e => {
+		e.preventDefault();
+
+		try {
+			const timestamp = new Date();
+			const id = crypto.randomUUID();
+
+			const storageRef = ref(storage, `images/${file.name}`);
+			await uploadBytes(storageRef, file);
+			const imageUrl = await getDownloadURL(storageRef);
+
+			const storageRefMp3 = ref(storage, `audios/${selectedFile.name}`);
+			await uploadBytes(storageRefMp3, selectedFile);
+			const Mp3 = await getDownloadURL(storageRefMp3);
+
+			const db = getDatabase(app);
+			await set(
+				DatabaseRef(
+					db,
+					`/projects/proj_cer3wPMCkxSWWePnENPiZL/data/Media/${
+						editar ? data['id audio'] : id
+					}`
+				),
+				{
+					'autor del audio': autor,
+					categoria: 'Devocionales',
+					'categoria id': '97e99260-d31e-11ed-88a9-ab01ab800b22',
+					'descripcion del mensaje': descripcion,
+					fecha: timestamp.getTime(),
+					'id audio': editar ? data['id audio'] : id,
+					imagen: imageUrl || data.imagen,
+					'titulo audio': titulo,
+					duracion: '',
+					url_audio: Mp3,
+				}
+			);
+
+			setTitulo('');
+			setAutor('');
+			setDescripcion('');
+			setImage('');
+			dispatch(setEditar(false));
+			setLoadding(false);
+
+			modal(false);
+		} catch (error) {
+			console.error('Error al agregar el evento:', error);
+		}
 	};
 
 	const cancelar = () => {
@@ -151,7 +229,6 @@ const CrearMedia = ({ modal, categoriasList }) => {
 		setAutor('');
 		setDescripcion('');
 		setImage('');
-		setUrlVideo('');
 		dispatch(setEditar(false));
 		modal(false);
 	};
@@ -225,12 +302,19 @@ const CrearMedia = ({ modal, categoriasList }) => {
 							</select>
 						</div>
 
+						<div className='div-file-del-media'>
+							<span>Imagen de Portada</span>{' '}
+							<input type='file' onChange={handleFileChange} />
+						</div>
+
 						<div className='div-file-del-media-'>
 							<span>Audio</span>{' '}
 							<input
 								type='file'
 								id='audio'
+								accept='.mp3'
 								style={{ display: 'none' }}
+								onChange={handleFileChangeMp3}
 							/>
 							<label
 								htmlFor='audio'
