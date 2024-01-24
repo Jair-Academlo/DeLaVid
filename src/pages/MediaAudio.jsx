@@ -13,6 +13,7 @@ import '../styles/media.css';
 
 const MediaAudio = () => {
 	const [mediaVideoData, setMediaVideoData] = useState([]);
+	const [categoriasList, setCategoriasList] = useState([]);
 	const { id = 1 } = useParams();
 	const navigate = useNavigate();
 	const [modal, setModal] = useState(false);
@@ -30,6 +31,13 @@ const MediaAudio = () => {
 					)
 				);
 
+				const categorias = await get(
+					child(
+						dbRef,
+						'projects/proj_cer3wPMCkxSWWePnENPiZL/data/categoria audio'
+					)
+				);
+
 				if (snapshot.exists()) {
 					const data = snapshot.val();
 					const dataArray = Object.entries(data).map(
@@ -39,6 +47,21 @@ const MediaAudio = () => {
 							...value,
 						})
 					);
+
+					const datacategotias = categorias.val();
+					const dataArrayCategorias = Object.entries(
+						datacategotias
+					).map(([key, value], index) => ({
+						serial: index,
+						id: key,
+						...value,
+					}));
+
+					const filterDataCategories = dataArrayCategorias.filter(
+						data => data.categoria !== 'Devocionales'
+					);
+
+					setCategoriasList(filterDataCategories);
 
 					const filterData = dataArray.filter(
 						data => data.categoria !== 'Devocionales'
@@ -112,14 +135,17 @@ const MediaAudio = () => {
 	return (
 		<>
 			{modal ? (
-				<CrearMediaAudio modal={setModal} />
+				<CrearMediaAudio
+					modal={setModal}
+					categoriasList={categoriasList}
+				/>
 			) : (
 				<div>
 					<section>
 						{data.map(audio => (
 							<>
 								<div
-									key={audio.id}
+									key={audio['id audio']}
 									className='container-media-card'
 									onClick={() => {
 										navigate(`/mediaAudio/${id}`);

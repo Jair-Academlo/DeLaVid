@@ -13,7 +13,7 @@ import {
 import './crearMediaAudio.css';
 
 // eslint-disable-next-line react/prop-types
-const CrearMedia = ({ modal }) => {
+const CrearMedia = ({ modal, categoriasList }) => {
 	const iconImagen =
 		'https://cdn-icons-png.flaticon.com/512/1055/1055650.png';
 
@@ -29,6 +29,8 @@ const CrearMedia = ({ modal }) => {
 	const [file, setFile] = useState(null);
 	const [urlVideo, setUrlVideo] = useState('');
 	const [loadding, setLoadding] = useState(false);
+
+	const filtercategory = categoriasList;
 
 	useEffect(() => {
 		if (editar) {
@@ -203,12 +205,16 @@ const CrearMedia = ({ modal }) => {
 						</div>
 						<div className='div-nombre-del-media'>
 							<h2>Categoria</h2>
-							<input
-								type='text'
-								placeholder='Selecciona una categoria'
-								value='Devocionales'
-								readOnly
-							/>
+							<select name='' id=''>
+								{filtercategory.map(categoria => (
+									<option
+										value={categoria}
+										key={categoria.id}
+									>
+										{categoria?.categoria}
+									</option>
+								))}
+							</select>
 						</div>
 
 						<div className='div-file-del-media-'>
