@@ -28,6 +28,7 @@ const CrearMedia = ({ modal, categoriasList }) => {
 	const [image, setImage] = useState(null);
 	const [file, setFile] = useState(null);
 	const [selectedFile, setSelectedFile] = useState(null);
+	const [category, setCategory] = useState({});
 
 	const [loadding, setLoadding] = useState(false);
 
@@ -47,6 +48,8 @@ const CrearMedia = ({ modal, categoriasList }) => {
 			setImage('');
 		}
 	}, [editar, data]);
+
+	console.log(category);
 
 	const handleFileChange = e => {
 		const selectedFile = e.target.files[0];
@@ -199,14 +202,14 @@ const CrearMedia = ({ modal, categoriasList }) => {
 				),
 				{
 					'autor del audio': autor,
-					categoria: 'Devocionales',
-					'categoria id': '97e99260-d31e-11ed-88a9-ab01ab800b22',
+					categoria: category.categoria,
+					'categoria id': category.id,
 					'descripcion del mensaje': descripcion,
 					fecha: timestamp.getTime(),
 					'id audio': editar ? data['id audio'] : id,
 					imagen: imageUrl || data.imagen,
 					'titulo audio': titulo,
-					duracion: '',
+					duracion: '2:30 min',
 					url_audio: Mp3,
 				}
 			);
@@ -279,7 +282,17 @@ const CrearMedia = ({ modal, categoriasList }) => {
 						<div className='div-nombre-del-media'>
 							<h2>Categoria</h2>
 
-							<select name='' id=''>
+							<select
+								name=''
+								id=''
+								onChange={e =>
+									setCategory(
+										filtercategory.find(
+											c => c.id === e.target.value
+										)
+									)
+								}
+							>
 								<option
 									value={
 										editar
