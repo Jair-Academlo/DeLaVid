@@ -30,6 +30,7 @@ const CrearMedia = ({ modal, categoriasList }) => {
 	const [selectedFile, setSelectedFile] = useState(null);
 	const [category, setCategory] = useState({});
 	const [audioDuration, setAudioDuration] = useState(0);
+	const [date, setDate] = useState('');
 
 	const [loadding, setLoadding] = useState(false);
 
@@ -42,15 +43,14 @@ const CrearMedia = ({ modal, categoriasList }) => {
 			setAutor(data['autor del audio']);
 			setDescripcion(data['descripcion del mensaje']);
 			setImage(data.imagen);
-		} else {
-			setTitulo('');
-			setAutor('');
-			setDescripcion('');
-			setImage('');
+			setAudioDuration(data.duracion);
+			setDate(data.fecha);
+			setCategory({
+				categoria: data.categoria,
+				id: data['categoria id'],
+			});
 		}
 	}, [editar, data]);
-
-	console.log(category);
 
 	const handleFileChange = e => {
 		const selectedFile = e.target.files[0];
@@ -120,16 +120,15 @@ const CrearMedia = ({ modal, categoriasList }) => {
 						),
 						{
 							'autor del audio': autor,
-							categoria: 'Devocionales',
-							'categoria id':
-								'97e99260-d31e-11ed-88a9-ab01ab800b22',
-							'descripcion del mensaje': descripcion,
-							fecha: timestamp.getTime(),
-							'id audio': editar ? data['id audio'] : id,
-							imagen: imageUrl || data.imagen,
-							'titulo audio': titulo,
-							duracion: '',
-							url_audio: Mp3,
+					categoria: category.categoria,
+					'categoria id': category.id,
+					'descripcion del mensaje': descripcion,
+					fecha: timestamp.getTime(),
+					'id audio': editar ? data['id audio'] : id,
+					imagen: imageUrl || data.imagen,
+					'titulo audio': titulo,
+					duracion: (audioDuration * 1000).toString() || '0',
+					url_audio: Mp3,
 						}
 					);
 
@@ -158,16 +157,15 @@ const CrearMedia = ({ modal, categoriasList }) => {
 						),
 						{
 							'autor del audio': autor,
-							categoria: 'Devocionales',
-							'categoria id':
-								'97e99260-d31e-11ed-88a9-ab01ab800b22',
-							'descripcion del mensaje': descripcion,
-							fecha: timestamp.getTime(),
-							'id audio': editar ? data['id audio'] : id,
-							imagen: data.imagen,
-							'titulo audio': titulo,
-							duracion: '',
-							url_audio: 'urlVideo',
+					categoria: category.categoria,
+					'categoria id': category.id,
+					'descripcion del mensaje': descripcion,
+					fecha: timestamp.getTime(),
+					'id audio': editar ? data['id audio'] : id,
+					imagen: imageUrl || data.imagen,
+					'titulo audio': titulo,
+					duracion: (audioDuration * 1000).toString() || '0',
+					url_audio: Mp3,
 						}
 					);
 
@@ -191,48 +189,68 @@ const CrearMedia = ({ modal, categoriasList }) => {
 	const newEvent = async e => {
 		e.preventDefault();
 
+		/* if (!file) {
+			alert('Selecciona una imagen de portada');
+			setLoadding(false);
+			return;
+		}
+
+		if (!selectedFile) {
+			alert('Selecciona un archivo de audio');
+			setLoadding(false);
+			return;
+		} */
+
 		try {
 			const timestamp = new Date();
 			const id = crypto.randomUUID();
 
+			let imageUrl = '';
+			let mp3Url = '';
+
 			const storageRef = ref(storage, `images/${file.name}`);
 			await uploadBytes(storageRef, file);
-			const imageUrl = await getDownloadURL(storageRef);
+			imageUrl = await getDownloadURL(storageRef);
 
 			const storageRefMp3 = ref(storage, `audios/${selectedFile.name}`);
 			await uploadBytes(storageRefMp3, selectedFile);
-			const Mp3 = await getDownloadURL(storageRefMp3);
+			mp3Url = await getDownloadURL(storageRefMp3);
 
 			const db = getDatabase(app);
-			await set(
-				DatabaseRef(
-					db,
-					`/projects/proj_cer3wPMCkxSWWePnENPiZL/data/Media/${
-						editar ? data['id audio'] : id
-					}`
-				),
-				{
+
+			// Envolver el bloque de código en un setTimeout de 3 segundos
+			setTimeout(async () => {
+				// Construir el objeto de datos a guardar
+				const newData = {
 					'autor del audio': autor,
 					categoria: category.categoria,
 					'categoria id': category.id,
 					'descripcion del mensaje': descripcion,
-					fecha: timestamp.getTime(),
+					fecha: editar ? date : timestamp.getTime(),
 					'id audio': editar ? data['id audio'] : id,
 					imagen: imageUrl || data.imagen,
 					'titulo audio': titulo,
 					duracion: (audioDuration * 1000).toString() || '0',
-					url_audio: Mp3,
-				}
-			);
+					url_audio: mp3Url || data['url_audio'],
+				};
 
-			setTitulo('');
-			setAutor('');
-			setDescripcion('');
-			setImage('');
-			dispatch(setEditar(false));
-			setLoadding(false);
+				// Determinar si estás editando o creando un nuevo elemento
+				const dataPath = `/projects/proj_cer3wPMCkxSWWePnENPiZL/data/Media/${
+					editar ? data['id audio'] : id
+				}`;
 
-			modal(false);
+				// Realizar la operación set en la base de datos
+				await set(DatabaseRef(db, dataPath), newData);
+
+				// Limpiar estados y cerrar modal
+				setTitulo('');
+				setAutor('');
+				setDescripcion('');
+				setImage('');
+				dispatch(setEditar(false));
+				setLoadding(false);
+				modal(false);
+			}, 3000); // 3 segundos
 		} catch (error) {
 			console.error('Error al agregar el evento:', error);
 		}
