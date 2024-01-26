@@ -29,6 +29,7 @@ const CrearMedia = ({ modal, categoriasList }) => {
 	const [file, setFile] = useState(null);
 	const [selectedFile, setSelectedFile] = useState(null);
 	const [category, setCategory] = useState({});
+	const [audioDuration, setAudioDuration] = useState(0);
 
 	const [loadding, setLoadding] = useState(false);
 
@@ -63,6 +64,16 @@ const CrearMedia = ({ modal, categoriasList }) => {
 	const handleFileChangeMp3 = event => {
 		const file = event.target.files[0];
 		setSelectedFile(file);
+
+		const audio = new Audio();
+		audio.src = URL.createObjectURL(file);
+
+		const audioInput = document.getElementById('audio');
+		audioInput.src = audio.src;
+
+		audio.addEventListener('loadedmetadata', () => {
+			setAudioDuration(Math.round(audio.duration));
+		});
 	};
 
 	/* 	const newEvent = async e => {
@@ -209,7 +220,7 @@ const CrearMedia = ({ modal, categoriasList }) => {
 					'id audio': editar ? data['id audio'] : id,
 					imagen: imageUrl || data.imagen,
 					'titulo audio': titulo,
-					duracion: '2:30 min',
+					duracion: (audioDuration * 1000).toString() || '0',
 					url_audio: Mp3,
 				}
 			);
@@ -306,7 +317,7 @@ const CrearMedia = ({ modal, categoriasList }) => {
 								</option>
 								{filtercategory.map(categoria => (
 									<option
-										value={categoria}
+										value={categoria?.id}
 										key={categoria.id}
 									>
 										{categoria?.categoria}
