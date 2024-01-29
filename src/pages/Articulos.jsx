@@ -26,7 +26,7 @@ const Articulos = () => {
 				const snapshot = await get(
 					child(
 						dbRef,
-						'projects/proj_cer3wPMCkxSWWePnENPiZL/data/Eventos'
+						'/projects/proj_cer3wPMCkxSWWePnENPiZL/data/Articulos'
 					)
 				);
 
