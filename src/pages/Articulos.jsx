@@ -8,7 +8,7 @@ import { database } from '../config/firebase';
 import { setData } from '../store/data/dataSlice';
 import { setEditar } from '../store/data/editarSlice';
 import { useDispatch } from 'react-redux';
-import CrearArtiuclo from '../components/crearArticulo/CreaArticulo';
+import CrearArticulo from '../components/crearArticulo/CreaArticulo';
 import '../styles/articulos.css';
 
 const Articulos = () => {
@@ -105,7 +105,7 @@ const Articulos = () => {
 	return (
 		<>
 			{modal ? (
-				<CrearArtiuclo modal={setModal} />
+				<CrearArticulo modal={setModal} />
 			) : (
 				<div>
 					<section>
