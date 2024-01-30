@@ -13,6 +13,7 @@ import DetallesMedia from './components/detallesMedia/DetallesMedia';
 import MediaAudio from './pages/MediaAudio';
 import DetallesMediaAudio from './components/detallesMediaAudio/DetallesMediaAudio';
 import './App.css';
+import DetallesArticulo from './components/detallesArticulo/DetallesArticulo';
 
 const App = () => {
 	const [authenticated, setAuthenticated] = useState(false);
@@ -66,6 +67,10 @@ const App = () => {
 									<Route
 										path='/articulos'
 										element={<Articulos />}
+									/>
+									<Route
+										path='/articulos/:id'
+										element={<DetallesArticulo />}
 									/>
 									<Route
 										path='/peticiones'

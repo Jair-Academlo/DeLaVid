@@ -53,7 +53,7 @@ const Articulos = () => {
 
 	const eliminarEvento = id => {
 		const refPath =
-			'/projects/proj_cer3wPMCkxSWWePnENPiZL/data/Eventos/' + id;
+			'/projects/proj_cer3wPMCkxSWWePnENPiZL/data/Articulos/' + id;
 
 		remove(ref(database, refPath))
 			.then(() => {
@@ -63,7 +63,7 @@ const Articulos = () => {
 						const snapshot = await get(
 							child(
 								dbRef,
-								'projects/proj_cer3wPMCkxSWWePnENPiZL/data/Eventos'
+								'/projects/proj_cer3wPMCkxSWWePnENPiZL/data/Articulos'
 							)
 						);
 
@@ -79,7 +79,7 @@ const Articulos = () => {
 							setEventosData(dataArray);
 						} else {
 							console.log(
-								'No hay datos en la colección "Eventos"'
+								'No hay datos en la colección "Articulos"'
 							);
 						}
 					} catch (error) {
@@ -89,7 +89,7 @@ const Articulos = () => {
 				fetchData();
 			})
 			.catch(error => {
-				console.error('Error al eliminar el evento:', error);
+				console.error('Error al eliminar el articulo:', error);
 			});
 	};
 
@@ -109,28 +109,31 @@ const Articulos = () => {
 			) : (
 				<div>
 					<section>
-						{eventosData.map(evento => (
+						{eventosData.map(articulo => (
 							<div
-								key={evento.id}
+								key={articulo['id articulo']}
 								className='container-eventos-card'
 								onClick={() => {
-									navigate(`/eventos/${id}`);
-									dirigirDetallesEvento(evento);
+									navigate(`/articulos/${id}`);
+									dirigirDetallesEvento(articulo);
 								}}
 							>
 								<div className='div-eventos-imagen'>
-									<img src={evento.imagen} alt='imagen' />
+									<img
+										src={articulo['imagen del articulo']}
+										alt='imagen'
+									/>
 								</div>
 								<div className='div-eventos-descripcion'>
-									<p>{evento['nombre del evento']}</p>
-									<p>{evento.fecha}</p>
+									<p>{articulo.titulo}</p>
+									<p>{articulo.fecha}</p>
 								</div>
 								<div className='div-eventos-button'>
 									<button
 										id='editar'
 										onClick={e => {
 											e.stopPropagation();
-											editarEvento(evento);
+											editarEvento(articulo);
 										}}
 									>
 										Editar
@@ -142,7 +145,9 @@ const Articulos = () => {
 										id='eliminar'
 										onClick={e => {
 											e.stopPropagation();
-											eliminarEvento(evento.id);
+											eliminarEvento(
+												articulo['id articulo']
+											);
 										}}
 									>
 										Eliminar{' '}
