@@ -1,5 +1,11 @@
 import { getDownloadURL, getStorage, uploadBytes, ref } from 'firebase/storage';
-import { getDatabase, ref as DatabaseRef, set } from 'firebase/database';
+import {
+	getDatabase,
+	ref as DatabaseRef,
+	set,
+	child,
+	get,
+} from 'firebase/database';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { setEditar } from '../../store/data/editarSlice';
@@ -25,6 +31,7 @@ const CreaArticulo = ({ modal }) => {
 	const [image, setImage] = useState(null);
 	const [file, setFile] = useState(null);
 	const [loadding, setLoadding] = useState(false);
+	const [categoriasAudio, setCategoriaAudio] = useState([]);
 
 	useEffect(() => {
 		if (editar) {
@@ -40,6 +47,8 @@ const CreaArticulo = ({ modal }) => {
 			setTime('');
 			setImage(null);
 		}
+
+		fetchData();
 	}, [editar, data]);
 
 	const handleFileChange = e => {
@@ -149,6 +158,34 @@ const CreaArticulo = ({ modal }) => {
 		modal(false);
 	};
 
+	const fetchData = async () => {
+		try {
+			const dbRef = DatabaseRef(getDatabase());
+			const snapshot = await get(
+				child(
+					dbRef,
+					'/projects/proj_cer3wPMCkxSWWePnENPiZL/data/categorias articulos'
+				)
+			);
+
+			if (snapshot.exists()) {
+				const data = snapshot.val();
+				const dataArray = Object.entries(data).map(
+					([key, value], index) => ({
+						serial: index,
+						id: key,
+						...value,
+					})
+				);
+				setCategoriaAudio(dataArray);
+			} else {
+				console.log('No hay datos en la colección "Categoria Audio"');
+			}
+		} catch (error) {
+			console.error('Error al obtener los datos:', error);
+		}
+	};
+
 	return (
 		<>
 			<>
@@ -173,6 +210,14 @@ const CreaArticulo = ({ modal }) => {
 									<option value=''>
 										selecciona categoria
 									</option>
+									{categoriasAudio.map(categoria => (
+										<option
+											value={categoria['id categoria']}
+											key={categoria['id categoria']}
+										>
+											{categoria?.categoria}
+										</option>
+									))}
 								</select>
 							</div>
 							<div className='div-nombre-del-evento'>
@@ -200,7 +245,7 @@ const CreaArticulo = ({ modal }) => {
 									name='descripcion'
 									id='descripcion'
 									cols='70'
-									rows='10'
+									rows='7'
 									placeholder='Escribe la informacion del evento'
 									defaultValue={info}
 									onChange={e => setInfo(e.target.value)}
