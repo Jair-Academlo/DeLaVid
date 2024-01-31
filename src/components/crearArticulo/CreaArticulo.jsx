@@ -165,7 +165,7 @@ const CreaArticulo = ({ modal }) => {
 					>
 						<section className='section-1-form-eventos'>
 							<div className='div-file-del-evento'>
-								<span>Imagen de Portada</span>{' '}
+								<h2>Imagen de Portada</h2>
 								<input
 									type='file'
 									onChange={handleFileChange}
@@ -204,7 +204,7 @@ const CreaArticulo = ({ modal }) => {
 									name='descripcion'
 									id='descripcion'
 									cols='70'
-									rows='12'
+									rows='10'
 									placeholder='Escribe la informacion del evento'
 									defaultValue={info}
 									onChange={e => setInfo(e.target.value)}
