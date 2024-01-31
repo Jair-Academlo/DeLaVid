@@ -24,22 +24,38 @@ const CreaArticulo = ({ modal }) => {
 	const iconImagen =
 		'https://cdn-icons-png.flaticon.com/512/1055/1055650.png';
 
-	const [name, setName] = useState('');
+	const [titulo, setTitulo] = useState('');
+	const [autor, setAutor] = useState('');
 	const [info, setInfo] = useState('');
+	const [categoria, setCategoria] = useState('');
 	const [image, setImage] = useState(null);
 	const [file, setFile] = useState(null);
 	const [loadding, setLoadding] = useState(false);
 	const [categoriasAudio, setCategoriaAudio] = useState([]);
 
+	/* 
+id articulo
+autor
+contenido del articulo
+categoria id
+categoria
+fecha
+imagen del articulo
+ */
+
 	useEffect(() => {
 		if (editar) {
 			// Asegúrate de que data esté definido
-			setName(data['nombre del evento']);
-			setInfo(data['informacion del evento']);
-			setImage(data.imagen);
+			setTitulo(data.titulo);
+			setAutor(data.autor);
+			setInfo(data['contenido del articulo']);
+			setCategoria(data.categoria);
+			setImage(data['imagen del articulo']);
 		} else {
-			setName('');
+			setTitulo('');
+			setAutor('');
 			setInfo('');
+			setCategoria('');
 			setImage(null);
 		}
 
@@ -87,8 +103,10 @@ const CreaArticulo = ({ modal }) => {
 						}
 					);
 
-					setName('');
+					setTitulo('');
+					setAutor('');
 					setInfo('');
+					setCategoria('');
 					setImage(null);
 					dispatch(setEditar(false));
 					setLoadding(false);
@@ -118,8 +136,10 @@ const CreaArticulo = ({ modal }) => {
 						}
 					);
 
-					setName('');
+					setTitulo('');
+					setAutor('');
 					setInfo('');
+					setCategoria('');
 					setImage(null);
 					dispatch(setEditar(false));
 					setLoadding(false);
@@ -132,8 +152,10 @@ const CreaArticulo = ({ modal }) => {
 	};
 
 	const cancelar = () => {
-		setName('');
+		setTitulo('');
+		setAutor('');
 		setInfo('');
+		setCategoria('');
 		setImage(null);
 		dispatch(setEditar(false));
 		modal(false);
@@ -188,8 +210,10 @@ const CreaArticulo = ({ modal }) => {
 							<div className='div-nombre-del-media'>
 								<h2>Categoria</h2>
 								<select name='' id='selecciona'>
-									<option value=''>
-										selecciona categoria
+									<option>
+										{editar
+											? categoria
+											: 'selecciona categoria'}
 									</option>
 									{categoriasAudio.map(categoria => (
 										<option
@@ -205,8 +229,8 @@ const CreaArticulo = ({ modal }) => {
 								<h2>Titulo del Articulo</h2>
 								<input
 									type='text'
-									defaultValue={name}
-									onChange={e => setName(e.target.value)}
+									defaultValue={titulo}
+									onChange={e => setTitulo(e.target.value)}
 									placeholder='Titulo del Articulo'
 								/>
 							</div>
@@ -214,8 +238,8 @@ const CreaArticulo = ({ modal }) => {
 								<h2>Autor del Articulo</h2>
 								<input
 									type='text'
-									defaultValue={name}
-									onChange={e => setName(e.target.value)}
+									defaultValue={autor}
+									onChange={e => setAutor(e.target.value)}
 									placeholder='Autor del Articulo'
 								/>
 							</div>

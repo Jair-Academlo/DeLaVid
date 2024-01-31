@@ -28,7 +28,7 @@ const DetallesArticulo = () => {
 						<p>Articulo</p>
 						<textarea
 							cols='30'
-							rows='15'
+							rows='10'
 							value={data['contenido del articulo']}
 							readOnly
 						></textarea>
