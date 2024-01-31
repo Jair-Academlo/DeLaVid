@@ -26,8 +26,6 @@ const CreaArticulo = ({ modal }) => {
 
 	const [name, setName] = useState('');
 	const [info, setInfo] = useState('');
-	const [selectedDate, setSelectedDate] = useState(null);
-	const [time, setTime] = useState('');
 	const [image, setImage] = useState(null);
 	const [file, setFile] = useState(null);
 	const [loadding, setLoadding] = useState(false);
@@ -38,13 +36,10 @@ const CreaArticulo = ({ modal }) => {
 			// Asegúrate de que data esté definido
 			setName(data['nombre del evento']);
 			setInfo(data['informacion del evento']);
-			setTime(data.hora);
 			setImage(data.imagen);
 		} else {
 			setName('');
 			setInfo('');
-			setSelectedDate(null);
-			setTime('');
 			setImage(null);
 		}
 
@@ -85,10 +80,7 @@ const CreaArticulo = ({ modal }) => {
 						{
 							'time evento': timestamp.getTime().toString(),
 							'nombre del evento': name,
-							fecha: data.fecha
-								? data.fecha
-								: selectedDate.toISOString().split('T')[0],
-							hora: time,
+
 							imagen: imageUrl || data.imagen,
 							'informacion del evento': info,
 							'id evento': editar ? data.id : id,
@@ -97,12 +89,9 @@ const CreaArticulo = ({ modal }) => {
 
 					setName('');
 					setInfo('');
-					setSelectedDate(null);
-					setTime('');
 					setImage(null);
 					dispatch(setEditar(false));
 					setLoadding(false);
-
 					modal(false);
 				}, 3000);
 			} else {
@@ -122,10 +111,7 @@ const CreaArticulo = ({ modal }) => {
 						{
 							'time evento': timestamp.getTime().toString(),
 							'nombre del evento': name,
-							fecha: data.fecha
-								? data.fecha
-								: selectedDate.toISOString().split('T')[0],
-							hora: new Date().toLocaleString(time),
+
 							imagen: data.imagen,
 							'informacion del evento': info,
 							'id evento': editar ? data.id : id,
@@ -134,12 +120,9 @@ const CreaArticulo = ({ modal }) => {
 
 					setName('');
 					setInfo('');
-					setSelectedDate(null);
-					setTime('');
 					setImage(null);
 					dispatch(setEditar(false));
 					setLoadding(false);
-
 					modal(false);
 				}, 3000);
 			}
@@ -151,8 +134,6 @@ const CreaArticulo = ({ modal }) => {
 	const cancelar = () => {
 		setName('');
 		setInfo('');
-		setSelectedDate(null);
-		setTime('');
 		setImage(null);
 		dispatch(setEditar(false));
 		modal(false);
