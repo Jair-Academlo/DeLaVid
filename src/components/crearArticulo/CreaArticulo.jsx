@@ -42,10 +42,6 @@ const CreaArticulo = ({ modal }) => {
 		}
 	}, [editar, data]);
 
-	/* 	const handleDateChange = date => {
-		setSelectedDate(date);
-	};
- */
 	const handleFileChange = e => {
 		const selectedFile = e.target.files[0];
 		if (selectedFile) {

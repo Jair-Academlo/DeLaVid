@@ -20,34 +20,6 @@ const Articulos = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const dbRef = ref(getDatabase());
-				const snapshot = await get(
-					child(
-						dbRef,
-						'/projects/proj_cer3wPMCkxSWWePnENPiZL/data/Articulos'
-					)
-				);
-
-				if (snapshot.exists()) {
-					const data = snapshot.val();
-					const dataArray = Object.entries(data).map(
-						([key, value], index) => ({
-							serial: index,
-							id: key,
-							...value,
-						})
-					);
-					setEventosData(dataArray);
-				} else {
-					console.log('No hay datos en la colección "Eventos"');
-				}
-			} catch (error) {
-				console.error('Error al obtener los datos:', error);
-			}
-		};
-
 		fetchData();
 	}, [modal]);
 
@@ -57,35 +29,6 @@ const Articulos = () => {
 
 		remove(ref(database, refPath))
 			.then(() => {
-				const fetchData = async () => {
-					try {
-						const dbRef = ref(getDatabase());
-						const snapshot = await get(
-							child(
-								dbRef,
-								'/projects/proj_cer3wPMCkxSWWePnENPiZL/data/Articulos'
-							)
-						);
-
-						if (snapshot.exists()) {
-							const data = snapshot.val();
-							const dataArray = Object.entries(data).map(
-								([key, value], index) => ({
-									serial: index,
-									id: key,
-									...value,
-								})
-							);
-							setEventosData(dataArray);
-						} else {
-							console.log(
-								'No hay datos en la colección "Articulos"'
-							);
-						}
-					} catch (error) {
-						console.error('Error al obtener los datos:', error);
-					}
-				};
 				fetchData();
 			})
 			.catch(error => {
@@ -102,6 +45,35 @@ const Articulos = () => {
 	const dirigirDetallesEvento = data => {
 		dispatch(setData(data));
 	};
+
+	const fetchData = async () => {
+		try {
+			const dbRef = ref(getDatabase());
+			const snapshot = await get(
+				child(
+					dbRef,
+					'/projects/proj_cer3wPMCkxSWWePnENPiZL/data/Articulos'
+				)
+			);
+
+			if (snapshot.exists()) {
+				const data = snapshot.val();
+				const dataArray = Object.entries(data).map(
+					([key, value], index) => ({
+						serial: index,
+						id: key,
+						...value,
+					})
+				);
+				setEventosData(dataArray);
+			} else {
+				console.log('No hay datos en la colección "Eventos"');
+			}
+		} catch (error) {
+			console.error('Error al obtener los datos:', error);
+		}
+	};
+
 	return (
 		<>
 			{modal ? (
