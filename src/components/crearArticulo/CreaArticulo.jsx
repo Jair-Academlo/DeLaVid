@@ -28,20 +28,11 @@ const CreaArticulo = ({ modal }) => {
 	const [autor, setAutor] = useState('');
 	const [info, setInfo] = useState('');
 	const [categoria, setCategoria] = useState('');
+	const [categoriaID, setCategoriaID] = useState({});
 	const [image, setImage] = useState(null);
 	const [file, setFile] = useState(null);
 	const [loadding, setLoadding] = useState(false);
-	const [categoriasAudio, setCategoriaAudio] = useState([]);
-
-	/* 
-id articulo
-autor
-contenido del articulo
-categoria id
-categoria
-fecha
-imagen del articulo
- */
+	const [categoriasArticulo, setCategoriaArticulo] = useState([]);
 
 	useEffect(() => {
 		if (editar) {
@@ -97,8 +88,8 @@ imagen del articulo
 							'id articulo': editar ? data.id : id,
 							titulo: titulo,
 							autor: autor,
-							'categoria id': '',
-							categoria,
+							'categoria id': categoriaID.id,
+							categoria: categoriaID.categoria,
 							'imagen del articulo': imageUrl || data.imagen,
 							'contenido del articulo': info,
 							fecha: timestamp.getTime().toString(),
@@ -115,8 +106,6 @@ imagen del articulo
 					modal(false);
 				}, 3000);
 			} else {
-				const timestamp = new Date();
-
 				const id = crypto.randomUUID();
 
 				setTimeout(async () => {
@@ -129,7 +118,14 @@ imagen del articulo
 							}`
 						),
 						{
-							'time evento': timestamp.getTime().toString(),
+							'id articulo': editar ? data.id : id,
+							titulo: titulo,
+							autor: autor,
+							'categoria id': categoriaID.id,
+							categoria: categoriaID.categoria,
+							'imagen del articulo': data.imagen,
+							'contenido del articulo': info,
+
 							'nombre del evento': name,
 
 							imagen: data.imagen,
@@ -182,7 +178,7 @@ imagen del articulo
 						...value,
 					})
 				);
-				setCategoriaAudio(dataArray);
+				setCategoriaArticulo(dataArray);
 			} else {
 				console.log('No hay datos en la colección "Categoria Audio"');
 			}
@@ -190,6 +186,8 @@ imagen del articulo
 			console.error('Error al obtener los datos:', error);
 		}
 	};
+
+	const filtercategory = categoriasArticulo;
 
 	return (
 		<>
@@ -211,22 +209,33 @@ imagen del articulo
 							</div>
 							<div className='div-nombre-del-media'>
 								<h2>Categoria</h2>
-								<select name='' id='selecciona'>
+								<select
+									name=''
+									id='selecciona'
+									onChange={e =>
+										setCategoriaID(
+											filtercategory.find(
+												c => c.id === e.target.value
+											)
+										)
+									}
+								>
 									<option>
 										{editar
 											? categoria
 											: 'selecciona categoria'}
 									</option>
-									{categoriasAudio.map(categoria => (
+									{categoriasArticulo.map(categoria => (
 										<option
-											value={categoria['id categoria']}
 											key={categoria['id categoria']}
+											value={categoria['id categoria']}
 										>
 											{categoria?.categoria}
 										</option>
 									))}
 								</select>
 							</div>
+
 							<div className='div-nombre-del-evento'>
 								<h2>Titulo del Articulo</h2>
 								<input
