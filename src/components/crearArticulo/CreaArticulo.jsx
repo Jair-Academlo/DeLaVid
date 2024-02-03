@@ -80,7 +80,7 @@ const CreaArticulo = ({ modal }) => {
 					await set(
 						DatabaseRef(
 							db,
-							`/projects/proj_cer3wPMCkxSWWePnENPiZL/data/Eventos/${
+							`/projects/proj_cer3wPMCkxSWWePnENPiZL/data/Articulos/${
 								editar ? data.id : id
 							}`
 						),
@@ -92,7 +92,7 @@ const CreaArticulo = ({ modal }) => {
 							categoria: categoriaID.categoria,
 							'imagen del articulo': imageUrl || data.imagen,
 							'contenido del articulo': info,
-							fecha: timestamp.getTime().toString(),
+							fecha: timestamp.toISOString().split('T')[0],
 						}
 					);
 
