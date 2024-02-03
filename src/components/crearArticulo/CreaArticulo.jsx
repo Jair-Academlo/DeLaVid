@@ -97,11 +97,11 @@ imagen del articulo
 							'id articulo': editar ? data.id : id,
 							titulo: titulo,
 							autor: autor,
-							'contenido del articulo': info,
 							'categoria id': '',
 							categoria,
-							fecha: timestamp.getTime().toString(),
 							'imagen del articulo': imageUrl || data.imagen,
+							'contenido del articulo': info,
+							fecha: timestamp.getTime().toString(),
 						}
 					);
 
