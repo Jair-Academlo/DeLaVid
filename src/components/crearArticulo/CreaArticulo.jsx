@@ -94,12 +94,14 @@ imagen del articulo
 							}`
 						),
 						{
-							'time evento': timestamp.getTime().toString(),
-							'nombre del evento': name,
-
-							imagen: imageUrl || data.imagen,
-							'informacion del evento': info,
-							'id evento': editar ? data.id : id,
+							'id articulo': editar ? data.id : id,
+							titulo: titulo,
+							autor: autor,
+							'contenido del articulo': info,
+							'categoria id': '',
+							categoria,
+							fecha: timestamp.getTime().toString(),
+							'imagen del articulo': imageUrl || data.imagen,
 						}
 					);
 
