@@ -14,6 +14,7 @@ import MediaAudio from './pages/MediaAudio';
 import DetallesMediaAudio from './components/detallesMediaAudio/DetallesMediaAudio';
 import './App.css';
 import DetallesArticulo from './components/detallesArticulo/DetallesArticulo';
+import DetallesPeticiones from './components/detallesPeticiones/DetallesPeticiones';
 
 const App = () => {
 	const [authenticated, setAuthenticated] = useState(false);
@@ -75,6 +76,10 @@ const App = () => {
 									<Route
 										path='/peticiones'
 										element={<Peticiones />}
+									/>
+									<Route
+										path='/peticiones/:id'
+										element={<DetallesPeticiones />}
 									/>
 									<Route
 										path='/notificaciones'
