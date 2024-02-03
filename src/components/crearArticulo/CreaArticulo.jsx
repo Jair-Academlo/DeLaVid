@@ -41,12 +41,17 @@ const CreaArticulo = ({ modal }) => {
 			setAutor(data.autor);
 			setInfo(data['contenido del articulo']);
 			setCategoria(data.categoria);
+			setCategoriaID({
+				id: data['categoria id'],
+				categoria: data.categoria,
+			});
 			setImage(data['imagen del articulo']);
 		} else {
 			setTitulo('');
 			setAutor('');
 			setInfo('');
 			setCategoria('');
+			setCategoriaID({});
 			setImage(null);
 		}
 
@@ -65,6 +70,29 @@ const CreaArticulo = ({ modal }) => {
 	const newEvent = async e => {
 		e.preventDefault();
 
+		if (!editar) {
+			if (!titulo) {
+				setLoadding(false);
+				return alert('ingresa un Titulo');
+			}
+			if (!autor) {
+				setLoadding(false);
+				return alert('ingresa un Autor');
+			}
+			if (!info) {
+				setLoadding(false);
+				return alert('ingresa una Descripcion');
+			}
+			if (!categoriaID || Object.keys(categoriaID).length === 0) {
+				setLoadding(false);
+				return alert('Selecciona una Categoría');
+			}
+			if (!image) {
+				setLoadding(false);
+				return alert('selecciona una Imagen');
+			}
+		}
+
 		try {
 			if (file) {
 				const storageRef = ref(storage, `images/${file.name}`);
@@ -81,11 +109,11 @@ const CreaArticulo = ({ modal }) => {
 						DatabaseRef(
 							db,
 							`/projects/proj_cer3wPMCkxSWWePnENPiZL/data/Articulos/${
-								editar ? data.id : id
+								editar ? data['id articulo'] : id
 							}`
 						),
 						{
-							'id articulo': editar ? data.id : id,
+							'id articulo': editar ? data['id articulo'] : id,
 							titulo: titulo,
 							autor: autor,
 							'categoria id': categoriaID.id,
@@ -113,24 +141,19 @@ const CreaArticulo = ({ modal }) => {
 					await set(
 						DatabaseRef(
 							db,
-							`/projects/proj_cer3wPMCkxSWWePnENPiZL/data/Eventos/${
-								editar ? data.id : id
+							`/projects/proj_cer3wPMCkxSWWePnENPiZL/data/Articulos/${
+								editar ? data['id articulo'] : id
 							}`
 						),
 						{
-							'id articulo': editar ? data.id : id,
+							'id articulo': editar ? data['id articulo'] : id,
 							titulo: titulo,
 							autor: autor,
 							'categoria id': categoriaID.id,
 							categoria: categoriaID.categoria,
-							'imagen del articulo': data.imagen,
+							'imagen del articulo': data['imagen del articulo'],
 							'contenido del articulo': info,
-
-							'nombre del evento': name,
-
-							imagen: data.imagen,
-							'informacion del evento': info,
-							'id evento': editar ? data.id : id,
+							fecha: data.fecha,
 						}
 					);
 
