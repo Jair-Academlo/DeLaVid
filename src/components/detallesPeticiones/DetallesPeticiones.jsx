@@ -13,7 +13,7 @@ const DetallesPeticiones = () => {
 			<section className='section-detalles-peticiones'>
 				<div className='div-1-detalles-peticiones'>
 					<div className='div-card-1-peticiones'>
-						<img src={N1} alt='imagen' width={150} height={150} />
+						<img src={N1} alt='imagen' />
 					</div>
 					<div className='div-card-2-peticiones'>
 						<div>
