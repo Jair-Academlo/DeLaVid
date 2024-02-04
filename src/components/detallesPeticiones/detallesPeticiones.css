@@ -82,4 +82,7 @@
     text-align: left;
     letter-spacing: 0.5px;
     line-height: 30px;
+    width: 85%;
+    min-height: 250px;
+
 }

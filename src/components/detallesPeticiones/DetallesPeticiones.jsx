@@ -62,8 +62,6 @@ const DetallesPeticiones = () => {
 					<textarea
 						name=''
 						id=''
-						cols='80'
-						rows='8'
 						placeholder='Peticion'
 						defaultValue={data?.peticion}
 						readOnly
