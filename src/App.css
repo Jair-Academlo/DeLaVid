@@ -16,5 +16,8 @@ body {
 
 .routes-app {
 	width: 80%;
-	background-color: #f8f9fa
+	background-color: #f8f9fa;
+	max-height: 100vh;
+	overflow: auto;
+
 }
