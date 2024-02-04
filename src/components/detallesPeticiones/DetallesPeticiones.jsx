@@ -50,7 +50,9 @@ const DetallesPeticiones = () => {
 							<input
 								type='text'
 								placeholder='Fecha'
-								defaultValue={data?.fecha}
+								defaultValue={new Date(
+									data.fecha
+								).toLocaleString()}
 								readOnly
 							/>
 						</div>
@@ -61,7 +63,7 @@ const DetallesPeticiones = () => {
 						name=''
 						id=''
 						cols='80'
-						rows='10'
+						rows='8'
 						placeholder='Peticion'
 						defaultValue={data?.peticion}
 						readOnly

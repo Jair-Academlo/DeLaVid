@@ -16,14 +16,70 @@
 }
 
 .div-card-1-peticiones {
-    width: 10%;
+    width: 15%;
 }
 
 .div-card-2-peticiones {
     width: 45%;
 }
 
+.div-card-2-peticiones div p {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+.div-card-2-peticiones div input {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 40px;
+    border: 1px lightgrey solid;
+    border-radius: 10px;
+    background-color: #fff;
+    padding-left: 20px;
+    outline: none;
+}
+
 
 .div-card-3-peticiones {
-    width: 45%;
+    width: 40%;
+}
+
+.div-card-3-peticiones div p {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+.div-card-3-peticiones div input {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 40px;
+    border: 1px lightgrey solid;
+    border-radius: 10px;
+    background-color: #fff;
+    padding-left: 20px;
+    outline: none;
+}
+
+.div-2-detalles-peticiones textarea {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px lightgrey solid;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 20px;
+    outline: none;
+    font-size: 0.8rem;
+    font-weight: 200;
+    text-align: left;
+    letter-spacing: 0.5px;
+    line-height: 30px;
 }
